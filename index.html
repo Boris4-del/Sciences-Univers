@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sciences Univers - Excellence Académique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES ET RESET ===== */
+        :root {
+            --primary-blue: #004a7c;
+            --secondary-blue: #0066a6;
+            --dark-blue: #002b4e;
+            --accent-orange: #ff6b00;
+            --accent-yellow: #ffd700;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #cccccc;
+            --success-green: #28a745;
+            --premium-gold: #ffb400;
+            --error-red: #dc3545;
+            --input-bg: #f0f4f8;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --border-radius: 16px;
+            --pi-color: #ff6b00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f6 100%);
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        /* Décoration π */
+        .pi-decoration {
+            position: absolute;
+            color: rgba(0, 74, 124, 0.05);
+            font-size: 15rem;
+            font-weight: 900;
+            font-family: 'Times New Roman', serif;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .pi-1 {
+            top: 100px;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .pi-2 {
+            bottom: 300px;
+            right: 5%;
+            transform: rotate(25deg);
+        }
+
+        .pi-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(10deg);
+            font-size: 20rem;
+        }
+
+        /* ===== EN-TÊTE ===== */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.97);
+            color: var(--white);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .top-bar.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+            font-size: 1.9rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 74, 124, 0.25);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: "π";
+            position: absolute;
+            font-size: 2.5rem;
+            font-family: 'Times New Roman', serif;
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 900;
+        }
+
+        .logo-icon i {
+            color: var(--accent-yellow);
+            font-size: 1.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.12rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-orange), #e65c00);
+            transition: width 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .auth-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .auth-links .login-btn {
+            background: linear-gradient(90deg, var(--accent-orange), #e65c00);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(230, 92, 0, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .auth-links .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(230, 92, 0, 0.45);
+        }
+
+        /* ===== BANNIÈRE PRINCIPALE ===== */
+        .hero-banner {
+            background: linear-gradient(105deg, rgba(0, 50, 100, 0.92) 0%, rgba(0, 70, 120, 0.88) 100%),
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 200px 5% 140px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            margin-bottom: 25px;
+            font-weight: 900;
+            line-height: 1.1;
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            max-width: 900px;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .hero-title::after {
+            content: "π";
+            position: absolute;
+            bottom: -30px;
+            right: 50px;
+            font-size: 8rem;
+            font-family: 'Times New Roman', serif;
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: 900;
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.9rem;
+            margin-bottom: 45px;
+            font-weight: 400;
+            max-width: 750px;
+            opacity: 0.92;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-highlight {
+            color: var(--accent-yellow);
+            font-weight: 800;
+            display: inline-block;
+            margin: 15px 0;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-orange), #e65c00);
+            color: var(--white);
+            padding: 20px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.25rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(230, 92, 0, 0.45);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: "π";
+            position: absolute;
+            font-size: 5rem;
+            font-family: 'Times New Roman', serif;
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: 900;
+            right: -20px;
+            bottom: -20px;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(230, 92, 0, 0.55);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 20px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.25rem;
+            transition: var(--transition);
+            border: 3px solid var(--white);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-5px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 90px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            max-width: 900px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-icon {
+            background: rgba(255, 255, 255, 0.15);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover .stat-icon {
+            transform: rotate(10deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .stat-icon i {
+            font-size: 2rem;
+            color: var(--accent-yellow);
+        }
+
+        .stat-content h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .stat-content p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* ===== SECTION FORMATIONS ===== */
+        .formation-section {
+            padding: 140px 5% 80px;
+            background: var(--white);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 80px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            border-radius: 3px;
+        }
+
+        .section-title::before {
+            content: "π";
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            font-size: 8rem;
+            font-family: 'Times New Roman', serif;
+            color: rgba(0, 74, 124, 0.05);
+            font-weight: 900;
+            z-index: -1;
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            margin-top: 40px;
+            line-height: 1.8;
+        }
+
+        /* Conteneur d'onglets pour les catégories de formations */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 16px 35px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            border-radius: 0;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-orange);
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-orange);
+            transition: width 0.4s ease;
+        }
+
+        .tab-btn.active::after,
+        .tab-btn:hover::after {
+            width: 100%;
+        }
+
+        /* Grille des formations */
+        .formation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .formation-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .formation-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .formation-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .formation-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 74, 124, 0.9) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .formation-name {
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: 800;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .formation-content {
+            padding: 35px;
+        }
+
+        .formation-description {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .formation-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .formation-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .formation-features i {
+            color: var(--accent-orange);
+            font-size: 1.3rem;
+            min-width: 25px;
+        }
+
+        /* Section des documents (à l'intérieur de la carte) */
+        .documents-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .documents-title {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .document-item:hover {
+            background: rgba(0, 74, 124, 0.05);
+            transform: translateX(5px);
+        }
+
+        .document-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(0, 74, 124, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+        }
+
+        .document-info {
+            flex: 1;
+        }
+
+        .document-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .document-meta {
+            display: flex;
+            gap: 15px;
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-download {
+            background: var(--success-green);
+            color: var(--white);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-premium {
+            background: var(--premium-gold);
+            color: var(--dark-blue);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 180, 0, 0.3);
+        }
+
+        .badge-premium {
+            background: linear-gradient(45deg, var(--premium-gold), #ff9d00);
+            color: var(--dark-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .badge-free {
+            background: var(--success-green);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .formation-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .formation-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .formation-price span {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #777;
+        }
+
+        .btn-enroll {
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 74, 124, 0.35);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-enroll:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 74, 124, 0.45);
+        }
+
+        /* ===== SECTION PROFESSEURS ===== */
+        .teachers-section {
+            padding: 140px 5% 80px;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e1f5fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .teacher-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .teacher-header {
+            display: flex;
+            padding: 30px;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .teacher-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .teacher-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .teacher-info p {
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .teacher-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            background: rgba(0, 74, 124, 0.1);
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .teacher-content {
+            padding: 0 30px 30px;
+        }
+
+        .teacher-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .teacher-specialty {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .specialty-tag {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent-orange);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION ESPACE ÉTUDIANT ===== */
+        .student-section {
+            padding: 140px 5%;
+            background: linear-gradient(135deg, #002b4e, #004a7c);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .student-info {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .student-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .student-features {
+            list-style: none;
+            margin: 40px 0;
+        }
+
+        .student-features li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+
+        .student-features i {
+            color: var(--accent-yellow);
+            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .student-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .student-img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .student-image:hover .student-img {
+            transform: scale(1.03);
+        }
+
+        .student-image::before {
+            content: "π";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 15rem;
+            font-family: 'Times New Roman', serif;
+            color: rgba(255, 255, 255, 0.05);
+            font-weight: 900;
+            z-index: 0;
+        }
+
+        /* ===== SECTION FONDATEUR ===== */
+        .founder-section {
+            padding: 140px 5% 80px;
+            background: var(--white);
+            position: relative;
+        }
+
+        .founder-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .founder-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .founder-img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .founder-info {
+            flex: 1;
+            position: relative;
+        }
+
+        .founder-title {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .founder-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            color: var(--dark-blue);
+        }
+
+        .founder-role {
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .founder-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .founder-contact {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+        }
+
+        .contact-item i {
+            color: var(--accent-orange);
+            font-size: 1.3rem;
+        }
+
+        /* ===== PIED DE PAGE ===== */
+        footer {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: var(--white);
+            padding: 100px 5% 50px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            max-width: 1600px;
+            margin: 0 auto 80px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.7rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 18px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-yellow);
+            padding-left: 8px;
+        }
+
+        .footer-links a i {
+            width: 30px;
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-info i {
+            color: var(--accent-orange);
+            font-size: 1.3rem;
+            margin-top: 5px;
+        }
+
+        .contact-info span {
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.4rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-orange);
+            transform: translateY(-8px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 25px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1.05rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-form button {
+            background: var(--accent-orange);
+            color: var(--white);
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form button:hover {
+            background: #e65c00;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+
+        .copyright a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+            .founder-container, .student-container {
+                flex-direction: column;
+            }
+            .founder-name, .student-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .hero-subtitle {
+                font-size: 1.6rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .stat-content h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.6rem;
+            }
+            .section-title {
+                font-size: 2.4rem;
+            }
+            .teacher-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .teacher-stats {
+                justify-content: center;
+            }
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+            .founder-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Décoration π en arrière-plan -->
+    <div class="pi-decoration pi-1">π</div>
+    <div class="pi-decoration pi-2">π</div>
+    <div class="pi-decoration pi-3">π</div>
+
+    <!-- ===== EN-TÊTE ===== -->
+    <div class="top-bar" id="topBar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-atom"></i>
+            </div>
+            <span>Sciences Univers</span>
+        </a>
+        <div class="nav-links">
+            <a href="#"><i class="fas fa-home"></i> Accueil</a>
+            <a href="#formations"><i class="fas fa-book"></i> Formations</a>
+            <a href="#professeurs"><i class="fas fa-chalkboard-teacher"></i> Professeurs</a>
+            <a href="#espace"><i class="fas fa-user-graduate"></i> Espace Étudiant</a>
+            <a href="#fondateur"><i class="fas fa-user-tie"></i> Fondateur</a>
+        </div>
+        <div class="auth-links">
+            <a href="#" class="login-btn"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+        </div>
+    </div>
+
+    <!-- ===== BANNIÈRE PRINCIPALE ===== -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">L'excellence académique <span class="hero-highlight">réinventée</span></h1>
+            <p class="hero-subtitle">Sciences Univers révolutionne l'apprentissage avec des programmes sur mesure, des professeurs d'élite et une plateforme technologique de pointe pour votre réussite.</p>
+
+            <div class="hero-buttons">
+                <button class="btn-primary"><i class="fas fa-rocket"></i> Commencer maintenant</button>
+                <button class="btn-secondary"><i class="fas fa-video"></i> Découvrir la méthode</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>22,500+</h3>
+                        <p>Étudiants formés</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>180+</h3>
+                        <p>Professeurs experts</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>98%</h3>
+                        <p>Taux de réussite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION FORMATIONS ===== -->
+    <section class="formation-section" id="formations">
+        <div class="section-header">
+            <h2 class="section-title">Nos Formations d'Excellence</h2>
+            <p class="section-subtitle">Des programmes académiques conçus par des experts pour maximiser votre réussite aux examens et concours</p>
+        </div>
+
+        <!-- Navigation par onglets -->
+        <div class="tabs-container">
+            <button class="tab-btn active">Toutes</button>
+            <button class="tab-btn">BAC Scientifique</button>
+            <button class="tab-btn">Classes Prépa</button>
+            <button class="tab-btn">Ingénierie</button>
+            <button class="tab-btn">Concours</button>
+        </div>
+
+        <!-- Grille des formations -->
+        <div class="formation-grid">
+            <!-- Formation 1: Bac -->
+            <div class="formation-card">
+                <div class="formation-img" style="background-image: url('https://images.unsplash.com/photo-1581093458799-ef0e8b7200d8?auto=format&fit=crop&w=800&q=80')">
+                    <div class="formation-overlay">
+                        <h3 class="formation-name">Préparation BAC S</h3>
+                    </div>
+                </div>
+                <div class="formation-content">
+                    <p class="formation-description">Programme intensif pour exceller au Baccalauréat Scientifique avec des méthodes d'apprentissage innovantes et un suivi personnalisé.</p>
+
+                    <ul class="formation-features">
+                        <li><i class="fas fa-check-circle"></i> Cours complets toutes matières</li>
+                        <li><i class="fas fa-check-circle"></i> Annales corrigées</li>
+                        <li><i class="fas fa-check-circle"></i> Examens blancs hebdomadaires</li>
+                        <li><i class="fas fa-check-circle"></i> Suivi personnalisé</li>
+                    </ul>
+
+                    <!-- Section des documents -->
+                    <div class="documents-section">
+                        <h3 class="documents-title"><i class="fas fa-file-download"></i> Ressources à télécharger</h3>
+                        <div class="documents-grid">
+                            <!-- Document 1 - Gratuit -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Fiches révision Maths
+                                        <span class="badge-free"><i class="fas fa-lock-open"></i> Gratuit</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="far fa-file"></i> PDF</span>
+                                        <span><i class="far fa-clock"></i> 25 pages</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-download"><i class="fas fa-download"></i> Télécharger</button>
+                                </div>
+                            </div>
+
+                            <!-- Document 2 - Premium -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-video"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Méthodes Physique
+                                        <span class="badge-premium"><i class="fas fa-crown"></i> Premium</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="fas fa-film"></i> Vidéo</span>
+                                        <span><i class="far fa-clock"></i> 45 min</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-premium"><i class="fas fa-shopping-cart"></i> Acheter</button>
+                                </div>
+                            </div>
+
+                            <!-- Document 3 - Gratuit -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Annales BAC 2023
+                                        <span class="badge-free"><i class="fas fa-lock-open"></i> Gratuit</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="far fa-file"></i> PDF</span>
+                                        <span><i class="far fa-clock"></i> 120 pages</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-download"><i class="fas fa-download"></i> Télécharger</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="formation-footer">
+                        <div class="formation-price">249€ <span>/ mois</span></div>
+                        <button class="btn-enroll"><i class="fas fa-arrow-right"></i> S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation 2: Prépa -->
+            <div class="formation-card">
+                <div class="formation-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80')">
+                    <div class="formation-overlay">
+                        <h3 class="formation-name">Classes Prépa MPSI</h3>
+                    </div>
+                </div>
+                <div class="formation-content">
+                    <p class="formation-description">Préparation intensive aux concours des Grandes Écoles d'Ingénieurs avec un programme complet et un encadrement de haut niveau.</p>
+
+                    <ul class="formation-features">
+                        <li><i class="fas fa-check-circle"></i> Cours de haut niveau</li>
+                        <li><i class="fas fa-check-circle"></i> Colles hebdomadaires</li>
+                        <li><i class="fas fa-check-circle"></i> Simulation de concours</li>
+                        <li><i class="fas fa-check-circle"></i> Encadrement par polytechniciens</li>
+                    </ul>
+
+                    <!-- Section des documents -->
+                    <div class="documents-section">
+                        <h3 class="documents-title"><i class="fas fa-file-download"></i> Ressources à télécharger</h3>
+                        <div class="documents-grid">
+                            <!-- Document 1 - Gratuit -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Méthodes d'analyse
+                                        <span class="badge-free"><i class="fas fa-lock-open"></i> Gratuit</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="far fa-file"></i> PDF</span>
+                                        <span><i class="far fa-clock"></i> 32 pages</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-download"><i class="fas fa-download"></i> Télécharger</button>
+                                </div>
+                            </div>
+
+                            <!-- Document 2 - Premium -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-archive"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Annales concours 2023
+                                        <span class="badge-premium"><i class="fas fa-crown"></i> Premium</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="far fa-folder"></i> Dossier</span>
+                                        <span><i class="far fa-clock"></i> 85 fichiers</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-premium"><i class="fas fa-shopping-cart"></i> Acheter</button>
+                                </div>
+                            </div>
+
+                            <!-- Document 3 - Premium -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-video"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Résolution de problèmes
+                                        <span class="badge-premium"><i class="fas fa-crown"></i> Premium</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="fas fa-film"></i> Vidéo</span>
+                                        <span><i class="far fa-clock"></i> 1h20</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-premium"><i class="fas fa-shopping-cart"></i> Acheter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="formation-footer">
+                        <div class="formation-price">349€ <span>/ mois</span></div>
+                        <button class="btn-enroll"><i class="fas fa-arrow-right"></i> S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation 3: Ingénierie -->
+            <div class="formation-card">
+                <div class="formation-img" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80')">
+                    <div class="formation-overlay">
+                        <h3 class="formation-name">Ingénierie Aérospatiale</h3>
+                    </div>
+                </div>
+                <div class="formation-content">
+                    <p class="formation-description">Formation spécialisée pour les étudiants en écoles d'ingénieurs et professionnels avec projets concrets et stages en entreprise.</p>
+
+                    <ul class="formation-features">
+                        <li><i class="fas fa-check-circle"></i> Spécialisations avancées</li>
+                        <li><i class="fas fa-check-circle"></i> Projets concrets</li>
+                        <li><i class="fas fa-check-circle"></i> Stages en entreprise</li>
+                        <li><i class="fas fa-check-circle"></i> Préparation à la vie professionnelle</li>
+                    </ul>
+
+                    <!-- Section des documents -->
+                    <div class="documents-section">
+                        <h3 class="documents-title"><i class="fas fa-file-download"></i> Ressources à télécharger</h3>
+                        <div class="documents-grid">
+                            <!-- Document 1 - Gratuit -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Introduction à l'aérodynamique
+                                        <span class="badge-free"><i class="fas fa-lock-open"></i> Gratuit</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="far fa-file"></i> PDF</span>
+                                        <span><i class="far fa-clock"></i> 42 pages</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-download"><i class="fas fa-download"></i> Télécharger</button>
+                                </div>
+                            </div>
+
+                            <!-- Document 2 - Gratuit -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Exercices de mécanique
+                                        <span class="badge-free"><i class="fas fa-lock-open"></i> Gratuit</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="far fa-file"></i> PDF</span>
+                                        <span><i class="far fa-clock"></i> 18 pages</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-download"><i class="fas fa-download"></i> Télécharger</button>
+                                </div>
+                            </div>
+
+                            <!-- Document 3 - Premium -->
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-video"></i>
+                                </div>
+                                <div class="document-info">
+                                    <div class="document-name">
+                                        Simulation CFD avancée
+                                        <span class="badge-premium"><i class="fas fa-crown"></i> Premium</span>
+                                    </div>
+                                    <div class="document-meta">
+                                        <span><i class="fas fa-film"></i> Vidéo</span>
+                                        <span><i class="far fa-clock"></i> 2h15</span>
+                                    </div>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-premium"><i class="fas fa-shopping-cart"></i> Acheter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="formation-footer">
+                        <div class="formation-price">299€ <span>/ mois</span></div>
+                        <button class="btn-enroll"><i class="fas fa-arrow-right"></i> S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION PROFESSEURS ===== -->
+    <section class="teachers-section" id="professeurs">
+        <div class="section-header">
+            <h2 class="section-title">Nos Experts Pédagogiques</h2>
+            <p class="section-subtitle">Une équipe de professeurs d'excellence sélectionnés parmi les meilleurs établissements</p>
+        </div>
+
+        <div class="teachers-grid">
+            <div class="teacher-card">
+                <div class="teacher-header">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Prof. Martin Dubois" class="teacher-avatar">
+                    <div class="teacher-info">
+                        <h3>Prof. Martin Dubois</h3>
+                        <p>Docteur en Physique Quantique</p>
+                        <div class="teacher-stats">
+                            <span class="stat-badge">15 ans d'expérience</span>
+                            <span class="stat-badge">98% de réussite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-content">
+                    <p>Ancien chercheur au CERN, le Prof. Dubois transforme les concepts les plus complexes en apprentissages accessibles. Ses méthodes pédagogiques innovantes ont aidé des milliers d'étudiants à réussir leurs concours.</p>
+                    <div class="teacher-specialty">
+                        <span class="specialty-tag">Physique</span>
+                        <span class="specialty-tag">Mathématiques</span>
+                        <span class="specialty-tag">Sciences de l'ingénieur</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teacher-card">
+                <div class="teacher-header">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="Dr. Sophie Laurent" class="teacher-avatar">
+                    <div class="teacher-info">
+                        <h3>Dr. Sophie Laurent</h3>
+                        <p>Agrégée de Mathématiques</p>
+                        <div class="teacher-stats">
+                            <span class="stat-badge">12 ans d'expérience</span>
+                            <span class="stat-badge">100% de réussite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-content">
+                    <p>Spécialiste des méthodes d'apprentissage innovantes, le Dr. Laurent a formé plus de 2,000 étudiants aux concours les plus sélectifs. Son approche pédagogique unique rend les mathématiques accessibles à tous.</p>
+                    <div class="teacher-specialty">
+                        <span class="specialty-tag">Mathématiques</span>
+                        <span class="specialty-tag">Algorithmique</span>
+                        <span class="specialty-tag">Analyse</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teacher-card">
+                <div class="teacher-header">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Prof. Jean-Luc Moreau" class="teacher-avatar">
+                    <div class="teacher-info">
+                        <h3>Prof. Jean-Luc Moreau</h3>
+                        <p>Ingénieur ENSAM</p>
+                        <div class="teacher-stats">
+                            <span class="stat-badge">18 ans d'expérience</span>
+                            <span class="stat-badge">97% de réussite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-content">
+                    <p>Expert en mécanique des fluides et thermodynamique, le Prof. Moreau dirige notre département d'ingénierie. Ses cours pratiques basés sur des cas réels préparent efficacement à la vie professionnelle.</p>
+                    <div class="teacher-specialty">
+                        <span class="specialty-tag">Mécanique</span>
+                        <span class="specialty-tag">Thermodynamique</span>
+                        <span class="specialty-tag">Sciences industrielles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION ESPACE ÉTUDIANT ===== -->
+    <section class="student-section" id="espace">
+        <div class="student-container">
+            <div class="student-info">
+                <h2 class="student-title">Espace Étudiant Premium</h2>
+                <p>Accédez à toutes les ressources pédagogiques, suivez votre progression et bénéficiez d'un accompagnement personnalisé.</p>
+
+                <ul class="student-features">
+                    <li>
+                        <i class="fas fa-chart-line"></i>
+                        <span>Tableau de bord de progression détaillé</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-book"></i>
+                        <span>Bibliothèque de ressources illimitée</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Planificateur d'étude intelligent</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-comments"></i>
+                        <span>Tutorat en direct avec des experts</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-certificate"></i>
+                        <span>Certifications reconnues</span>
+                    </li>
+                </ul>
+
+                <button class="btn-primary"><i class="fas fa-user-graduate"></i> Accéder à mon espace</button>
+            </div>
+            <div class="student-image">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Espace étudiant" class="student-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION FONDATEUR ===== -->
+    <section class="founder-section" id="fondateur">
+        <div class="founder-container">
+            <div class="founder-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Koudaya Kossi Boris" class="founder-img">
+            </div>
+            <div class="founder-info">
+                <div class="founder-title">Fondateur & Visionnaire</div>
+                <h2 class="founder-name">Koudaya Kossi Boris</h2>
+                <div class="founder-role">Pionnier de l'Éducation Scientifique</div>
+
+                <p class="founder-description">
+                    Diplômé de l'École Polytechnique et docteur en physique théorique, Koudaya Kossi Boris a consacré sa carrière à démocratiser l'accès à l'excellence scientifique. Son parcours exceptionnel l'a mené des laboratoires de recherche les plus prestigieux aux salles de classe, avec une conviction : chaque étudiant mérite un enseignement d'excellence.
+                </p>
+
+                <div class="founder-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>kossi.boris@sciencesunivers.fr</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 6 12 34 56 78</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Paris, France</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PIED DE PAGE ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Sciences Univers</h3>
+                <p style="color: #ccc; margin-bottom: 25px; line-height: 1.8;">Plateforme leader dans l'éducation scientifique d'excellence. Nous formons les talents de demain avec des méthodes pédagogiques innovantes et un accompagnement personnalisé.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Préparation BAC Scientifique</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Classes Préparatoires</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ingénierie Aérospatiale</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Concours scientifiques</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Formations professionnelles</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cours en ligne</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Annales corrigées</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Vidéos pédagogiques</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Exercices interactifs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Bibliothèque numérique</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>12 Avenue des Sciences<br>75005 Paris, France</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+33 1 23 45 67 89</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@sciencesunivers.fr</span>
+                    </li>
+                </ul>
+
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Votre email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Sciences Univers. Tous droits réservés. | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Mentions légales</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== ANIMATION DE L'EN-TÊTE AU DÉFILEMENT =====
+        const topBar = document.getElementById('topBar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                topBar.classList.add('scrolled');
+            } else {
+                topBar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== ANIMATION DES ÉLÉMENTS AU DÉFILEMENT =====
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.formation-card, .teacher-card');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+
+        // Initialiser les animations
+        document.querySelectorAll('.formation-card, .teacher-card').forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+            element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+
+        // Déclencher l'animation au chargement et au défilement
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // ===== ANIMATION DU TITRE HÉRO =====
+        const heroTitle = document.querySelector('.hero-title');
+        heroTitle.style.opacity = '0';
+        heroTitle.style.transform = 'translateY(30px)';
+        heroTitle.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+
+        setTimeout(() => {
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 300);
+
+        // ===== NAVIGATION PAR ONGLETS =====
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Retirer la classe active de tous les boutons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                this.classList.add('active');
+
+                // Ici, on filtrerait les formations en fonction de la catégorie sélectionnée
+                // Pour cet exemple, nous n'implémentons pas le filtrage réel
+            });
+        });
+
+        // ===== TÉLÉCHARGEMENT DE DOCUMENTS =====
+        const downloadButtons = document.querySelectorAll('.btn-download');
+        downloadButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const documentName = this.closest('.document-item').querySelector('.document-name').textContent;
+                alert(`Téléchargement de "${documentName}" en cours...`);
+                // Ici, on intégrerait la logique réelle de téléchargement
+            });
+        });
+
+        // ===== ACHAT DE CONTENU PREMIUM =====
+        const premiumButtons = document.querySelectorAll('.btn-premium');
+        premiumButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const documentName = this.closest('.document-item').querySelector('.document-name').textContent;
+                alert(`Redirection vers la page d'achat pour "${documentName}"`);
+                // Ici, on redirigerait vers la page de paiement
+            });
+        });
+    </script>
+</body>
+</html>
