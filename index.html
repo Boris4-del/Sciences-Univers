@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES ET RESET ===== */
         :root {
             --primary-blue: #004a7c;
             --secondary-blue: #0066a6;
@@ -76,7 +75,7 @@
             font-size: 20rem;
         }
 
-        /* ===== EN-TÊTE ===== */
+        /* En-tête */
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -212,7 +211,7 @@
             box-shadow: 0 12px 30px rgba(230, 92, 0, 0.45);
         }
 
-        /* ===== BANNIÈRE PRINCIPALE ===== */
+        /* Bannière principale */
         .hero-banner {
             background: linear-gradient(105deg, rgba(0, 50, 100, 0.92) 0%, rgba(0, 70, 120, 0.88) 100%),
                         url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1800&q=80');
@@ -391,7 +390,7 @@
             opacity: 0.85;
         }
 
-        /* ===== SECTION FORMATIONS ===== */
+        /* Section Formations */
         .formation-section {
             padding: 140px 5% 80px;
             background: var(--white);
@@ -481,8 +480,7 @@
             transition: width 0.4s ease;
         }
 
-        .tab-btn.active::after,
-        .tab-btn:hover::after {
+        .tab-btn.active::after, .tab-btn:hover::after {
             width: 100%;
         }
 
@@ -567,7 +565,7 @@
             min-width: 25px;
         }
 
-        /* Section des documents (à l'intérieur de la carte) */
+        /* Section des documents */
         .documents-section {
             margin-top: 30px;
             padding-top: 25px;
@@ -745,7 +743,7 @@
             box-shadow: 0 12px 25px rgba(0, 74, 124, 0.45);
         }
 
-        /* ===== SECTION PROFESSEURS ===== */
+        /* Section Professeurs */
         .teachers-section {
             padding: 140px 5% 80px;
             background: linear-gradient(135deg, #f0f8ff 0%, #e1f5fe 100%);
@@ -845,7 +843,7 @@
             font-weight: 600;
         }
 
-        /* ===== SECTION ESPACE ÉTUDIANT ===== */
+        /* Section Espace Étudiant */
         .student-section {
             padding: 140px 5%;
             background: linear-gradient(135deg, #002b4e, #004a7c);
@@ -928,7 +926,7 @@
             z-index: 0;
         }
 
-        /* ===== SECTION FONDATEUR ===== */
+        /* Section Fondateur */
         .founder-section {
             padding: 140px 5% 80px;
             background: var(--white);
@@ -1008,7 +1006,7 @@
             font-size: 1.3rem;
         }
 
-        /* ===== PIED DE PAGE ===== */
+        /* Pied de page */
         footer {
             background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
             color: var(--white);
@@ -1171,17 +1169,216 @@
             text-decoration: underline;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* Section de téléversement de fichiers */
+        .upload-section {
+            padding: 80px 5%;
+            background: var(--light-bg);
+        }
+
+        .upload-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .upload-container h2 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .form-group input[type="file"],
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            background: var(--input-bg);
+            transition: var(--transition);
+        }
+
+        .form-group input[type="file"]:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+        }
+
+        .btn-upload {
+            background: linear-gradient(90deg, var(--accent-orange), #e65c00);
+            color: var(--white);
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px auto 0;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(230, 92, 0, 0.35);
+        }
+
+        .btn-upload:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(230, 92, 0, 0.45);
+        }
+
+        .upload-status {
+            margin: 30px 0;
+            min-height: 30px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .alert.success {
+            background: rgba(40, 167, 69, 0.2);
+            color: var(--success-green);
+        }
+
+        .alert.error {
+            background: rgba(220, 53, 69, 0.2);
+            color: var(--error-red);
+        }
+
+        .file-list {
+            margin-top: 50px;
+        }
+
+        .file-list h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            border-bottom: 2px solid rgba(0, 74, 124, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .file-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .file-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .file-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .file-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(0, 74, 124, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .file-info p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-download, .btn-delete {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .btn-download {
+            background: rgba(40, 167, 69, 0.2);
+            color: var(--success-green);
+        }
+
+        .btn-download:hover {
+            background: rgba(40, 167, 69, 0.3);
+            transform: scale(1.1);
+        }
+
+        .btn-delete {
+            background: rgba(220, 53, 69, 0.2);
+            color: var(--error-red);
+        }
+
+        .btn-delete:hover {
+            background: rgba(220, 53, 69, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
         @media (max-width: 1200px) {
             .hero-title {
                 font-size: 3.5rem;
             }
+
             .section-title {
                 font-size: 2.8rem;
             }
+
             .founder-container, .student-container {
                 flex-direction: column;
             }
+
             .founder-name, .student-title {
                 font-size: 3rem;
             }
@@ -1191,16 +1388,20 @@
             .nav-links {
                 display: none;
             }
+
             .hero-title {
                 font-size: 3rem;
             }
+
             .hero-subtitle {
                 font-size: 1.6rem;
             }
+
             .hero-buttons {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             .stat-content h3 {
                 font-size: 2rem;
             }
@@ -1210,19 +1411,24 @@
             .hero-title {
                 font-size: 2.6rem;
             }
+
             .section-title {
                 font-size: 2.4rem;
             }
+
             .teacher-header {
                 flex-direction: column;
                 text-align: center;
             }
+
             .teacher-stats {
                 justify-content: center;
             }
+
             .formation-grid {
                 grid-template-columns: 1fr;
             }
+
             .founder-contact {
                 flex-direction: column;
                 gap: 15px;
@@ -1236,7 +1442,7 @@
     <div class="pi-decoration pi-2">π</div>
     <div class="pi-decoration pi-3">π</div>
 
-    <!-- ===== EN-TÊTE ===== -->
+    <!-- En-tête -->
     <div class="top-bar" id="topBar">
         <a href="#" class="logo">
             <div class="logo-icon">
@@ -1256,17 +1462,15 @@
         </div>
     </div>
 
-    <!-- ===== BANNIÈRE PRINCIPALE ===== -->
+    <!-- Bannière principale -->
     <section class="hero-banner">
         <div class="hero-content">
             <h1 class="hero-title">L'excellence académique <span class="hero-highlight">réinventée</span></h1>
             <p class="hero-subtitle">Sciences Univers révolutionne l'apprentissage avec des programmes sur mesure, des professeurs d'élite et une plateforme technologique de pointe pour votre réussite.</p>
-
             <div class="hero-buttons">
                 <button class="btn-primary"><i class="fas fa-rocket"></i> Commencer maintenant</button>
                 <button class="btn-secondary"><i class="fas fa-video"></i> Découvrir la méthode</button>
             </div>
-
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-icon">
@@ -1299,7 +1503,7 @@
         </div>
     </section>
 
-    <!-- ===== SECTION FORMATIONS ===== -->
+    <!-- Section Formations -->
     <section class="formation-section" id="formations">
         <div class="section-header">
             <h2 class="section-title">Nos Formations d'Excellence</h2>
@@ -1326,7 +1530,6 @@
                 </div>
                 <div class="formation-content">
                     <p class="formation-description">Programme intensif pour exceller au Baccalauréat Scientifique avec des méthodes d'apprentissage innovantes et un suivi personnalisé.</p>
-
                     <ul class="formation-features">
                         <li><i class="fas fa-check-circle"></i> Cours complets toutes matières</li>
                         <li><i class="fas fa-check-circle"></i> Annales corrigées</li>
@@ -1416,7 +1619,6 @@
                 </div>
                 <div class="formation-content">
                     <p class="formation-description">Préparation intensive aux concours des Grandes Écoles d'Ingénieurs avec un programme complet et un encadrement de haut niveau.</p>
-
                     <ul class="formation-features">
                         <li><i class="fas fa-check-circle"></i> Cours de haut niveau</li>
                         <li><i class="fas fa-check-circle"></i> Colles hebdomadaires</li>
@@ -1506,7 +1708,6 @@
                 </div>
                 <div class="formation-content">
                     <p class="formation-description">Formation spécialisée pour les étudiants en écoles d'ingénieurs et professionnels avec projets concrets et stages en entreprise.</p>
-
                     <ul class="formation-features">
                         <li><i class="fas fa-check-circle"></i> Spécialisations avancées</li>
                         <li><i class="fas fa-check-circle"></i> Projets concrets</li>
@@ -1589,13 +1790,12 @@
         </div>
     </section>
 
-    <!-- ===== SECTION PROFESSEURS ===== -->
+    <!-- Section Professeurs -->
     <section class="teachers-section" id="professeurs">
         <div class="section-header">
             <h2 class="section-title">Nos Experts Pédagogiques</h2>
             <p class="section-subtitle">Une équipe de professeurs d'excellence sélectionnés parmi les meilleurs établissements</p>
         </div>
-
         <div class="teachers-grid">
             <div class="teacher-card">
                 <div class="teacher-header">
@@ -1618,7 +1818,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="teacher-card">
                 <div class="teacher-header">
                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="Dr. Sophie Laurent" class="teacher-avatar">
@@ -1640,7 +1839,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="teacher-card">
                 <div class="teacher-header">
                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Prof. Jean-Luc Moreau" class="teacher-avatar">
@@ -1665,13 +1863,12 @@
         </div>
     </section>
 
-    <!-- ===== SECTION ESPACE ÉTUDIANT ===== -->
+    <!-- Section Espace Étudiant -->
     <section class="student-section" id="espace">
         <div class="student-container">
             <div class="student-info">
                 <h2 class="student-title">Espace Étudiant Premium</h2>
                 <p>Accédez à toutes les ressources pédagogiques, suivez votre progression et bénéficiez d'un accompagnement personnalisé.</p>
-
                 <ul class="student-features">
                     <li>
                         <i class="fas fa-chart-line"></i>
@@ -1694,7 +1891,6 @@
                         <span>Certifications reconnues</span>
                     </li>
                 </ul>
-
                 <button class="btn-primary"><i class="fas fa-user-graduate"></i> Accéder à mon espace</button>
             </div>
             <div class="student-image">
@@ -1703,7 +1899,7 @@
         </div>
     </section>
 
-    <!-- ===== SECTION FONDATEUR ===== -->
+    <!-- Section Fondateur -->
     <section class="founder-section" id="fondateur">
         <div class="founder-container">
             <div class="founder-image">
@@ -1713,11 +1909,9 @@
                 <div class="founder-title">Fondateur & Visionnaire</div>
                 <h2 class="founder-name">Koudaya Kossi Boris</h2>
                 <div class="founder-role">Pionnier de l'Éducation Scientifique</div>
-
                 <p class="founder-description">
                     Diplômé de l'École Polytechnique et docteur en physique théorique, Koudaya Kossi Boris a consacré sa carrière à démocratiser l'accès à l'excellence scientifique. Son parcours exceptionnel l'a mené des laboratoires de recherche les plus prestigieux aux salles de classe, avec une conviction : chaque étudiant mérite un enseignement d'excellence.
                 </p>
-
                 <div class="founder-contact">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -1736,7 +1930,54 @@
         </div>
     </section>
 
-    <!-- ===== PIED DE PAGE ===== -->
+    <!-- Section de téléversement de fichiers -->
+    <section class="upload-section">
+        <div class="upload-container">
+            <h2>Espace Administrateur - Téléchargement de fichiers</h2>
+
+            <!-- Formulaire de téléversement -->
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Sélectionner un fichier :</label>
+                    <input type="file" id="file" name="file" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="formation">Associer à une formation :</label>
+                    <select id="formation" name="formationId">
+                        <option value="">Aucune</option>
+                        <option value="1">Préparation BAC S</option>
+                        <option value="2">Classes Prépa MPSI</option>
+                        <option value="3">Ingénierie Aérospatiale</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fileType">Type de fichier :</label>
+                    <select id="fileType" name="fileType" required>
+                        <option value="document">Document</option>
+                        <option value="image">Image</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-upload">
+                    <i class="fas fa-upload"></i> Télécharger
+                </button>
+            </form>
+
+            <div id="uploadStatus" class="upload-status"></div>
+
+            <!-- Liste des fichiers -->
+            <div class="file-list">
+                <h3>Fichiers récents</h3>
+                <div id="fileList" class="file-items">
+                    <!-- Les fichiers seront affichés ici -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -1750,7 +1991,6 @@
                     <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-
             <div class="footer-column">
                 <h3>Formations</h3>
                 <ul class="footer-links">
@@ -1761,7 +2001,6 @@
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Formations professionnelles</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Ressources</h3>
                 <ul class="footer-links">
@@ -1772,7 +2011,6 @@
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Bibliothèque numérique</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Contact</h3>
                 <ul class="contact-info">
@@ -1789,21 +2027,149 @@
                         <span>contact@sciencesunivers.fr</span>
                     </li>
                 </ul>
-
                 <div class="newsletter-form">
                     <input type="email" placeholder="Votre email">
                     <button type="submit"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
-
         <div class="copyright">
             <p>&copy; 2023 Sciences Univers. Tous droits réservés. | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Mentions légales</a></p>
         </div>
     </footer>
 
+    <!-- Backend intégré -->
     <script>
-        // ===== ANIMATION DE L'EN-TÊTE AU DÉFILEMENT =====
+        // Configuration du backend intégré
+        const backendConfig = {
+            apiBaseUrl: 'https://api.sciencesunivers.com/v1',
+            uploadEndpoint: '/files/upload',
+            filesEndpoint: '/files',
+            authToken: localStorage.getItem('authToken') || null
+        };
+
+        // Fonction pour gérer le téléversement de fichiers
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const statusDiv = document.getElementById('uploadStatus');
+            statusDiv.innerHTML = '';
+
+            const fileInput = document.getElementById('file');
+            const formationSelect = document.getElementById('formation');
+            const fileTypeSelect = document.getElementById('fileType');
+
+            if (!fileInput.files.length) {
+                statusDiv.innerHTML = '<div class="alert error">Veuillez sélectionner un fichier</div>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('formationId', formationSelect.value);
+            formData.append('fileType', fileTypeSelect.value);
+
+            try {
+                const response = await fetch(`${backendConfig.apiBaseUrl}${backendConfig.uploadEndpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${backendConfig.authToken}`
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusDiv.innerHTML = '<div class="alert success">Fichier téléchargé avec succès!</div>';
+                    loadFiles();
+                } else {
+                    statusDiv.innerHTML = `<div class="alert error">${data.message || 'Erreur lors du téléchargement'}</div>`;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<div class="alert error">Erreur réseau</div>';
+                console.error('Erreur:', error);
+            }
+        });
+
+        // Fonction pour charger les fichiers
+        async function loadFiles() {
+            try {
+                const response = await fetch(`${backendConfig.apiBaseUrl}${backendConfig.filesEndpoint}`, {
+                    headers: {
+                        'Authorization': `Bearer ${backendConfig.authToken}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erreur lors du chargement des fichiers');
+                }
+
+                const data = await response.json();
+                const fileList = document.getElementById('fileList');
+                fileList.innerHTML = '';
+
+                data.data.forEach(file => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+
+                    const fileIcon = file.type === 'image' ? 'fa-file-image' : 'fa-file-pdf';
+                    const fileSize = (file.size / 1024).toFixed(2); // Taille en Ko
+
+                    fileItem.innerHTML = `
+                        <div class="file-icon">
+                            <i class="fas ${fileIcon}"></i>
+                        </div>
+                        <div class="file-info">
+                            <h4>${file.name}</h4>
+                            <p>Type: ${file.type} | Taille: ${fileSize} Ko</p>
+                            <p>Téléchargé le: ${new Date(file.createdAt).toLocaleDateString()}</p>
+                        </div>
+                        <div class="file-actions">
+                            <a href="/uploads/${file.type === 'image' ? 'images' : 'documents'}/${file.path.split('/').pop()}" download class="btn-download">
+                                <i class="fas fa-download"></i>
+                            </a>
+                            <button class="btn-delete" onclick="deleteFile('${file._id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    fileList.appendChild(fileItem);
+                });
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+
+        // Fonction pour supprimer un fichier
+        async function deleteFile(fileId) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce fichier?')) {
+                try {
+                    const response = await fetch(`${backendConfig.apiBaseUrl}${backendConfig.filesEndpoint}/${fileId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${backendConfig.authToken}`
+                        }
+                    });
+
+                    if (response.ok) {
+                        loadFiles();
+                    } else {
+                        alert('Erreur lors de la suppression du fichier');
+                    }
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    alert('Erreur réseau');
+                }
+            }
+        }
+
+        // Charger les fichiers au démarrage
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFiles();
+        });
+
+        // Animation de l'en-tête au défilement
         const topBar = document.getElementById('topBar');
         window.addEventListener('scroll', function() {
             if (window.scrollY > 100) {
@@ -1813,13 +2179,12 @@
             }
         });
 
-        // ===== ANIMATION DES ÉLÉMENTS AU DÉFILEMENT =====
+        // Animation des éléments au défilement
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.formation-card, .teacher-card');
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-
                 if (elementPosition < windowHeight - 100) {
                     element.style.opacity = "1";
                     element.style.transform = "translateY(0)";
@@ -1838,48 +2203,41 @@
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
 
-        // ===== ANIMATION DU TITRE HÉRO =====
+        // Animation du titre héroïque
         const heroTitle = document.querySelector('.hero-title');
         heroTitle.style.opacity = '0';
         heroTitle.style.transform = 'translateY(30px)';
         heroTitle.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-
         setTimeout(() => {
             heroTitle.style.opacity = '1';
             heroTitle.style.transform = 'translateY(0)';
         }, 300);
 
-        // ===== NAVIGATION PAR ONGLETS =====
+        // Navigation par onglets
         const tabButtons = document.querySelectorAll('.tab-btn');
         tabButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Retirer la classe active de tous les boutons
                 tabButtons.forEach(btn => btn.classList.remove('active'));
-                // Ajouter la classe active au bouton cliqué
                 this.classList.add('active');
-
                 // Ici, on filtrerait les formations en fonction de la catégorie sélectionnée
-                // Pour cet exemple, nous n'implémentons pas le filtrage réel
             });
         });
 
-        // ===== TÉLÉCHARGEMENT DE DOCUMENTS =====
+        // Téléchargement de documents
         const downloadButtons = document.querySelectorAll('.btn-download');
         downloadButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const documentName = this.closest('.document-item').querySelector('.document-name').textContent;
                 alert(`Téléchargement de "${documentName}" en cours...`);
-                // Ici, on intégrerait la logique réelle de téléchargement
             });
         });
 
-        // ===== ACHAT DE CONTENU PREMIUM =====
+        // Achat de contenu premium
         const premiumButtons = document.querySelectorAll('.btn-premium');
         premiumButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const documentName = this.closest('.document-item').querySelector('.document-name').textContent;
                 alert(`Redirection vers la page d'achat pour "${documentName}"`);
-                // Ici, on redirigerait vers la page de paiement
             });
         });
     </script>
