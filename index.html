@@ -23,21 +23,43 @@
             --transition: all 0.3s ease;
             --border-radius: 8px;
             --pi-color: #ff6b00;
+            --gold-color: #ffd700;
+            --prepa-color: #9c27b0;
+            --xens-color: #2196f3;
+            --central-color: #4caf50;
+            --mines-color: #ff9800;
+            --ccp-color: #f44336;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
         body {
             background-color: var(--light-color);
             color: var(--dark-color);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* Barre de défilement personnalisée */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            border: 3px solid var(--light-color);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
         }
 
         /* Décoration π */
@@ -50,26 +72,22 @@
             z-index: 0;
             pointer-events: none;
         }
-
         .pi-1 {
             top: 100px;
             left: 5%;
             transform: rotate(-15deg);
         }
-
         .pi-2 {
             bottom: 300px;
             right: 5%;
             transform: rotate(25deg);
         }
-
         .pi-3 {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(10deg);
             font-size: 20rem;
         }
-
         /* Header */
         header {
             background-color: var(--white);
@@ -80,7 +98,6 @@
             z-index: 1000;
             transition: var(--transition);
         }
-
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -89,7 +106,6 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -99,17 +115,14 @@
             font-weight: 700;
             font-size: 1.5rem;
         }
-
         .logo-icon {
             font-size: 2rem;
             color: var(--secondary-color);
         }
-
         .nav-links {
             display: flex;
             gap: 2rem;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--primary-color);
@@ -118,11 +131,9 @@
             position: relative;
             padding: 0.5rem 0;
         }
-
         .nav-links a:hover {
             color: var(--secondary-color);
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -133,17 +144,14 @@
             background-color: var(--secondary-color);
             transition: width 0.3s ease;
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
-
         .auth-buttons {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-
         .btn {
             padding: 0.6rem 1.2rem;
             border-radius: var(--border-radius);
@@ -153,33 +161,35 @@
             border: none;
             cursor: pointer;
         }
-
         .btn-primary {
             background-color: var(--secondary-color);
             color: var(--white);
         }
-
         .btn-primary:hover {
             background-color: #2980b9;
             transform: translateY(-2px);
         }
-
         .btn-outline {
             background-color: transparent;
             color: var(--secondary-color);
             border: 1px solid var(--secondary-color);
         }
-
         .btn-outline:hover {
             background-color: var(--secondary-color);
             color: var(--white);
         }
-
+        .btn-concours {
+            background-color: var(--prepa-color);
+            color: var(--white);
+        }
+        .btn-concours:hover {
+            background-color: #7b1fa2;
+            transform: translateY(-2px);
+        }
         /* Language Selector */
         .language-selector {
             margin-left: 1rem;
         }
-
         .language-selector select {
             padding: 0.5rem;
             border-radius: var(--border-radius);
@@ -187,13 +197,11 @@
             background-color: var(--white);
             color: var(--primary-color);
         }
-
         /* Search Bar */
         .search-container {
             position: relative;
             margin-left: 1rem;
         }
-
         .search-container input {
             padding: 0.5rem 2rem 0.5rem 1rem;
             border-radius: var(--border-radius);
@@ -201,13 +209,11 @@
             width: 200px;
             transition: var(--transition);
         }
-
         .search-container input:focus {
             outline: none;
             border-color: var(--secondary-color);
             width: 250px;
         }
-
         .search-container i {
             position: absolute;
             right: 10px;
@@ -215,7 +221,28 @@
             transform: translateY(-50%);
             color: #777;
         }
-
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .search-suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-suggestion-item:hover {
+            background-color: #f0f8ff;
+        }
         /* Hero Section */
         .hero {
             padding: 12rem 5% 8rem;
@@ -226,36 +253,30 @@
             position: relative;
             transition: background-image 1s ease;
         }
-
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
         }
-
         .btn-hero {
             display: inline-block;
             margin: 0 0.5rem;
         }
-
         /* Features Section */
         .features {
             padding: 6rem 5%;
             background-color: var(--white);
         }
-
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
@@ -263,7 +284,6 @@
             color: var(--primary-color);
             position: relative;
         }
-
         .section-title::after {
             content: '';
             position: absolute;
@@ -275,7 +295,27 @@
             background-color: var(--secondary-color);
             border-radius: 2px;
         }
-
+        .program-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -283,7 +323,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .feature-card {
             background-color: var(--white);
             border-radius: var(--border-radius);
@@ -292,38 +331,62 @@
             transition: var(--transition);
             text-align: center;
             cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
-
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
         }
+        .feature-card.xens { border-left: 4px solid var(--xens-color); }
+        .feature-card.central { border-left: 4px solid var(--central-color); }
+        .feature-card.mines { border-left: 4px solid var(--mines-color); }
+        .feature-card.ccp { border-left: 4px solid var(--ccp-color); }
 
         .feature-icon {
             font-size: 3rem;
-            color: var(--secondary-color);
             margin-bottom: 1rem;
+            transition: var(--transition);
         }
-
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
         .feature-card h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-
+        .feature-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        .feature-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background-color: var(--gold-color);
+            color: var(--dark-color);
+            padding: 0.3rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+            width: 120px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
         /* Program Detail Section */
         .program-detail {
             display: none;
             padding: 6rem 5%;
             background-color: var(--light-color);
         }
-
         .program-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
         }
-
         .back-button {
             background-color: transparent;
             border: none;
@@ -334,15 +397,12 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .back-button i {
             transition: var(--transition);
         }
-
         .back-button:hover i {
             transform: translateX(-5px);
         }
-
         .program-tabs {
             display: flex;
             gap: 1rem;
@@ -350,7 +410,6 @@
             border-bottom: 2px solid #eee;
             padding-bottom: 1rem;
         }
-
         .tab-btn {
             padding: 0.8rem 1.5rem;
             background: transparent;
@@ -361,11 +420,9 @@
             transition: var(--transition);
             position: relative;
         }
-
         .tab-btn.active {
             color: var(--secondary-color);
         }
-
         .tab-btn.active::after {
             content: '';
             position: absolute;
@@ -375,31 +432,25 @@
             height: 3px;
             background-color: var(--secondary-color);
         }
-
         .tab-btn:hover:not(.active) {
             background-color: rgba(52, 152, 219, 0.1);
         }
-
         .tab-content {
             display: none;
         }
-
         .tab-content.active {
             display: block;
             animation: fadeIn 0.5s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         .subject-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
-
         .subject-card {
             background-color: var(--white);
             border-radius: var(--border-radius);
@@ -407,18 +458,15 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-
         .subject-card:hover {
             transform: translateY(-5px);
         }
-
         .subject-header {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-bottom: 1rem;
         }
-
         .subject-icon {
             width: 50px;
             height: 50px;
@@ -430,16 +478,13 @@
             font-size: 1.5rem;
             color: var(--secondary-color);
         }
-
         .subject-title {
             font-size: 1.2rem;
             color: var(--primary-color);
         }
-
         .file-list {
             list-style: none;
         }
-
         .file-item {
             padding: 0.8rem 0;
             border-bottom: 1px solid #eee;
@@ -447,30 +492,24 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .file-item:last-child {
             border-bottom: none;
         }
-
         .file-info {
             display: flex;
             align-items: center;
             gap: 0.8rem;
         }
-
         .file-icon {
             color: var(--accent-color);
         }
-
         .file-name {
             font-weight: 500;
         }
-
         .file-actions {
             display: flex;
             gap: 0.5rem;
         }
-
         .download-btn {
             background-color: transparent;
             border: none;
@@ -479,17 +518,14 @@
             font-size: 1.2rem;
             transition: var(--transition);
         }
-
         .download-btn:hover {
             color: var(--primary-color);
         }
-
         /* Services Section */
         .services-section {
             padding: 6rem 5%;
             background-color: var(--light-color);
         }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -497,7 +533,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .service-card {
             background-color: var(--white);
             border-radius: var(--border-radius);
@@ -505,49 +540,40 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-
         .service-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
-
         .service-title {
             font-size: 1.5rem;
             color: var(--primary-color);
         }
-
         .service-price {
             font-weight: bold;
             color: var(--secondary-color);
         }
-
         .service-content {
             margin-bottom: 1.5rem;
         }
-
         .service-actions {
             display: flex;
             justify-content: space-between;
         }
-
         .btn-buy {
             background-color: var(--secondary-color);
             color: var(--white);
         }
-
         .btn-details {
             background-color: transparent;
             color: var(--secondary-color);
             border: 1px solid var(--secondary-color);
         }
-
         /* Premium Content */
         .premium-badge {
             background-color: var(--accent-color);
@@ -558,13 +584,11 @@
             display: inline-block;
             margin-left: 0.5rem;
         }
-
         /* Contact Section */
         .contact-section {
             padding: 6rem 5%;
             background-color: var(--white);
         }
-
         .contact-container {
             display: flex;
             flex-wrap: wrap;
@@ -572,23 +596,19 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .contact-info {
             flex: 1;
             min-width: 300px;
         }
-
         .contact-form {
             flex: 1;
             min-width: 300px;
         }
-
         .team-member {
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-
         .team-avatar {
             width: 80px;
             height: 80px;
@@ -603,28 +623,34 @@
             overflow: hidden;
             position: relative;
         }
-
         .team-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .team-info h4 {
             color: var(--primary-color);
             margin-bottom: 0.3rem;
         }
-
         .team-info p {
             color: var(--secondary-color);
             font-size: 0.9rem;
         }
-
+        .team-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .team-info a:hover {
+            text-decoration: underline;
+        }
         /* Password Toggle */
         .password-container {
             position: relative;
         }
-
         .toggle-password {
             position: absolute;
             right: 10px;
@@ -633,14 +659,12 @@
             cursor: pointer;
             color: #777;
         }
-
         /* Footer */
         footer {
             background-color: var(--primary-color);
             color: var(--white);
             padding: 4rem 5% 2rem;
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -648,36 +672,29 @@
             max-width: 1200px;
             margin: 0 auto 3rem;
         }
-
         .footer-column h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-
         .footer-links a {
             color: var(--white);
             text-decoration: none;
             transition: var(--transition);
         }
-
         .footer-links a:hover {
             color: var(--secondary-color);
         }
-
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-
         .social-icon {
             width: 40px;
             height: 40px;
@@ -689,25 +706,21 @@
             color: var(--white);
             transition: var(--transition);
         }
-
         .social-icon:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
         }
-
         .copyright {
             text-align: center;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 0.9rem;
         }
-
         /* File Upload Section */
         .upload-section {
             padding: 4rem 5%;
             background-color: var(--light-color);
         }
-
         .upload-container {
             max-width: 800px;
             margin: 0 auto;
@@ -716,20 +729,16 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
         }
-
         .upload-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-
         .upload-form {
             margin-bottom: 2rem;
         }
-
         .file-list {
             margin-top: 2rem;
         }
-
         .file-item {
             display: flex;
             justify-content: space-between;
@@ -739,18 +748,15 @@
             border-radius: var(--border-radius);
             margin-bottom: 1rem;
         }
-
         .file-info {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
         .file-actions {
             display: flex;
             gap: 0.5rem;
         }
-
         .file-actions button {
             background: none;
             border: none;
@@ -758,7 +764,6 @@
             color: var(--primary-color);
             font-size: 1.2rem;
         }
-
         /* Premium Modal */
         .premium-modal {
             display: none;
@@ -770,7 +775,6 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 3000;
         }
-
         .premium-modal-content {
             background-color: var(--white);
             margin: 10% auto;
@@ -781,27 +785,23 @@
             position: relative;
             text-align: center;
         }
-
         .premium-plans {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
-
         .premium-plan {
             background-color: var(--light-color);
             padding: 1.5rem;
             border-radius: var(--border-radius);
         }
-
         .premium-price {
             font-size: 2rem;
             font-weight: bold;
             color: var(--primary-color);
             margin: 1rem 0;
         }
-
         /* Payment Modal */
         .payment-modal {
             display: none;
@@ -813,7 +813,6 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 3000;
         }
-
         .payment-content {
             background-color: var(--white);
             margin: 10% auto;
@@ -823,14 +822,12 @@
             border-radius: var(--border-radius);
             position: relative;
         }
-
         .payment-methods {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin: 1.5rem 0;
         }
-
         .payment-method {
             width: 80px;
             height: 50px;
@@ -842,16 +839,13 @@
             cursor: pointer;
             transition: var(--transition);
         }
-
         .payment-method:hover {
             border-color: var(--secondary-color);
         }
-
         .payment-method.selected {
             border-color: var(--secondary-color);
             background-color: rgba(52, 152, 219, 0.1);
         }
-
         /* Notification */
         .notification {
             position: fixed;
@@ -864,25 +858,20 @@
             display: none;
             animation: slideIn 0.5s ease, fadeOut 0.5s ease 2.5s;
         }
-
         .notification.success {
             background-color: var(--success-color);
         }
-
         .notification.error {
             background-color: var(--danger-color);
         }
-
         @keyframes slideIn {
             from { right: -300px; opacity: 0; }
             to { right: 20px; opacity: 1; }
         }
-
         @keyframes fadeOut {
             from { opacity: 1; }
             to { opacity: 0; }
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
@@ -890,45 +879,40 @@
                 gap: 1rem;
                 padding: 1rem;
             }
-
             .nav-links {
                 flex-direction: column;
                 gap: 0.5rem;
                 align-items: center;
             }
-
             .hero h1 {
                 font-size: 2.5rem;
             }
-
             .hero p {
                 font-size: 1rem;
             }
-
             .features-grid, .dashboard-grid, .services-grid, .premium-plans, .subject-grid {
                 grid-template-columns: 1fr;
             }
-
             .modal-content, .premium-modal-content {
                 width: 90%;
                 padding: 1.5rem;
             }
-
             .contact-container {
                 flex-direction: column;
             }
-
             .program-tabs {
                 flex-direction: column;
             }
-
             .search-container {
                 margin: 1rem 0;
                 width: 100%;
             }
-
             .search-container input {
                 width: 100%;
+            }
+            .program-filters {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -957,6 +941,7 @@
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Rechercher...">
                     <i class="fas fa-search"></i>
+                    <div id="searchSuggestions" class="search-suggestions"></div>
                 </div>
                 <div class="language-selector">
                     <select id="languageSelect">
@@ -965,9 +950,6 @@
                         <option value="es">Español</option>
                     </select>
                 </div>
-                <button id="loginBtn" class="btn btn-outline">Connexion</button>
-                <button id="registerBtn" class="btn btn-primary">Inscription</button>
-                <button id="logoutBtn" class="btn btn-outline" style="display: none;">Déconnexion</button>
             </div>
         </div>
     </header>
@@ -978,13 +960,22 @@
             <h1>L'excellence académique à portée de main</h1>
             <p>Rejoignez des milliers d'étudiants qui ont transformé leur parcours académique avec nos programmes d'excellence et notre accompagnement personnalisé.</p>
             <button class="btn btn-primary btn-hero" id="startBtn">Commencer maintenant</button>
-            <button class="btn btn-outline btn-hero" id="discoverBtn">Découvrir nos formations</button>
+            <button class="btn btn-concours btn-hero" id="discoverBtn">Découvrir nos formations</button>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="formations">
         <h2 class="section-title">Nos programmes phares</h2>
+
+        <div class="program-filters">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="bac">BAC Scientifique</button>
+            <button class="filter-btn" data-filter="prepa">Prépa</button>
+            <button class="filter-btn" data-filter="concours">Grands Concours</button>
+            <button class="filter-btn" data-filter="ing">Ingénierie</button>
+        </div>
+
         <div class="features-grid">
             <div class="feature-card" data-program="bac">
                 <i class="fas fa-book feature-icon"></i>
@@ -1003,13 +994,41 @@
             </div>
             <div class="feature-card" data-program="deg1">
                 <i class="fas fa-book feature-icon"></i>
-                <h4>Certificat du Premier Degré</h4>
+                <h3>Certificat du Premier Degré</h3>
                 <p>Des exercices pratiques, des examens nationaux et internationaux</p>
             </div>
             <div class="feature-card" data-program="uni">
                 <i class="fas fa-book feature-icon"></i>
-                <h5>Programme Universitaire</h5>
+                <h3>Programme Universitaire</h3>
                 <p>Des sujets corrigés de DUT, Licence, Master, Doctorat, DEUG, ...</p>
+            </div>
+            <div class="feature-card" data-program="Jpsy">
+                <i class="fas fa-brain feature-icon"></i>
+                <h3>Jeux Psychotechniques</h3>
+                <p>Découvrez de quoi votre cerveau est capable</p>
+            </div>
+
+            <!-- Grands Concours -->
+            <div class="feature-card xens" data-program="xens" data-category="concours">
+                <div class="feature-badge">Nouveau</div>
+                <i class="fas fa-crown feature-icon" style="color: var(--xens-color);"></i>
+                <h3>Concours X-ENS</h3>
+                <p>Préparation intensive au concours de l'École Normale Supérieure et Polytechnique.</p>
+            </div>
+            <div class="feature-card central" data-program="centrale" data-category="concours">
+                <i class="fas fa-cogs feature-icon" style="color: var(--central-color);"></i>
+                <h3>Concours Centrale-Supélec</h3>
+                <p>Préparation complète pour le concours Centrale-Supélec.</p>
+            </div>
+            <div class="feature-card mines" data-program="mines" data-category="concours">
+                <i class="fas fa-hard-hat feature-icon" style="color: var(--mines-color);"></i>
+                <h3>Concours Mines-Ponts</h3>
+                <p>Formation spécialisée pour le concours Mines-Ponts.</p>
+            </div>
+            <div class="feature-card ccp" data-program="ccp" data-category="concours">
+                <i class="fas fa-atom feature-icon" style="color: var(--ccp-color);"></i>
+                <h3>Concours CCP</h3>
+                <p>Préparation au concours commun Centrale, Mines, etc.</p>
             </div>
         </div>
     </section>
@@ -1022,21 +1041,24 @@
             </button>
             <h2 class="section-title" id="program-title"></h2>
         </div>
-
         <div class="program-tabs">
             <button class="tab-btn active" data-tab="courses">Cours</button>
             <button class="tab-btn" data-tab="resources">Ressources</button>
+            <button class="tab-btn" data-tab="exams">Annales</button>
         </div>
-
         <div class="tab-content active" id="courses-tab">
             <div class="subject-grid" id="courses-content">
                 <!-- Cours chargés dynamiquement -->
             </div>
         </div>
-
         <div class="tab-content" id="resources-tab">
             <div class="subject-grid" id="resources-content">
                 <!-- Ressources chargées dynamiquement -->
+            </div>
+        </div>
+        <div class="tab-content" id="exams-tab">
+            <div class="subject-grid" id="exams-content">
+                <!-- Annales chargées dynamiquement -->
             </div>
         </div>
     </section>
@@ -1054,7 +1076,7 @@
                 <div class="service-content">
                     <p>Conception de produits innovants avec une approche centrée sur l'utilisateur.</p>
                     <ul>
-                        <li>Design de produits 3D <span class="premium-badge">Premium</span></li>
+                        <li>Design de produits 3D <span class="premium-badge design-badge">Design</span></li>
                         <li>Prototypage rapide</li>
                         <li>Études d'ergonomie</li>
                         <li>Design thinking</li>
@@ -1065,7 +1087,6 @@
                     <button class="btn btn-details" data-service="1">Détails</button>
                 </div>
             </div>
-
             <!-- Création de site web -->
             <div class="service-card">
                 <div class="service-header">
@@ -1075,7 +1096,7 @@
                 <div class="service-content">
                     <p>Sites web modernes, responsives et optimisés pour le référencement.</p>
                     <ul>
-                        <li>Design sur mesure <span class="premium-badge">Premium</span></li>
+                        <li>Design sur mesure <span class="premium-badge web-badge">Web</span></li>
                         <li>Développement frontend</li>
                         <li>Intégration CMS</li>
                         <li>Maintenance et support</li>
@@ -1086,7 +1107,6 @@
                     <button class="btn btn-details" data-service="2">Détails</button>
                 </div>
             </div>
-
             <!-- Cours particuliers -->
             <div class="service-card">
                 <div class="service-header">
@@ -1096,7 +1116,7 @@
                 <div class="service-content">
                     <p>Accompagnement personnalisé par des enseignants qualifiés.</p>
                     <ul>
-                        <li>Mathématiques, Physique, Chimie <span class="premium-badge">Premium</span></li>
+                        <li>Mathématiques, Physique, Chimie <span class="premium-badge tutoring-badge">Tutoring</span></li>
                         <li>Programmation et informatique</li>
                         <li>Préparation aux examens</li>
                         <li>Suivi personnalisé</li>
@@ -1115,7 +1135,6 @@
         <div class="file-container">
             <h2 class="section-title">Documents à télécharger</h2>
             <p>Téléchargez nos ressources pédagogiques pour compléter votre formation.</p>
-
             <div class="file-grid" id="file-grid">
                 <!-- Fichiers chargés dynamiquement -->
             </div>
@@ -1137,6 +1156,9 @@
                         <p>Fondateur et Ingénieur Aéronautique</p>
                         <p>kossi.boris@sciencesunivers.com</p>
                         <p>+33 1 23 45 67 89</p>
+                        <a href="https://www.linkedin.com/in/kossi-boris-koudaya" target="_blank">
+                            <i class="fab fa-linkedin"></i> Profil LinkedIn
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1181,7 +1203,7 @@
                     <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/kossi-boris-koudaya" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="footer-column">
@@ -1189,8 +1211,8 @@
                 <ul class="footer-links">
                     <li><a href="#">Préparation BAC</a></li>
                     <li><a href="#">Classes Prépa</a></li>
+                    <li><a href="#">Concours Grandes Écoles</a></li>
                     <li><a href="#">Ingénierie</a></li>
-                    <li><a href="#">Concours</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1212,169 +1234,6 @@
             <p>&copy; 2023 Sciences Univers. Tous droits réservés.</p>
         </div>
     </footer>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h2>Connexion</h2>
-            </div>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" class="form-control" required>
-                </div>
-                <div class="form-group password-container">
-                    <label for="loginPassword">Mot de passe</label>
-                    <input type="password" id="loginPassword" class="form-control" required>
-                    <i class="fas fa-eye toggle-password" data-target="loginPassword"></i>
-                </div>
-                <div class="form-footer">
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
-                    <a href="#" id="showRegister">Créer un compte</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h2>Inscription</h2>
-            </div>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="firstName">Prénom</label>
-                    <input type="text" id="firstName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Nom</label>
-                    <input type="text" id="lastName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="studyLevel">Niveau d'étude</label>
-                    <select id="studyLevel" class="form-control" required>
-                        <option value="">Sélectionnez votre niveau</option>
-                        <option value="lycee">Lycée</option>
-                        <option value="prepa">Classes préparatoires</option>
-                        <option value="university">Université</option>
-                        <option value="engineering">École d'ingénieurs</option>
-                    </select>
-                </div>
-                <div class="form-group password-container">
-                    <label for="registerPassword">Mot de passe</label>
-                    <input type="password" id="registerPassword" class="form-control" required>
-                    <i class="fas fa-eye toggle-password" data-target="registerPassword"></i>
-                </div>
-                <div class="form-group password-container">
-                    <label for="confirmPassword">Confirmer le mot de passe</label>
-                    <input type="password" id="confirmPassword" class="form-control" required>
-                    <i class="fas fa-eye toggle-password" data-target="confirmPassword"></i>
-                </div>
-                <div class="form-footer">
-                    <button type="submit" class="btn btn-primary">S'inscrire</button>
-                    <a href="#" id="showLogin">Déjà un compte? Connectez-vous</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Premium Modal -->
-    <div id="premiumModal" class="premium-modal">
-        <div class="premium-modal-content">
-            <span class="close">&times;</span>
-            <h2>Choisissez votre abonnement Premium</h2>
-            <p>Accédez à tous nos contenus exclusifs avec un abonnement premium</p>
-            <div class="premium-plans">
-                <div class="premium-plan">
-                    <h3>Mensuel</h3>
-                    <div class="premium-price">19,99€ <span>/mois</span></div>
-                    <ul>
-                        <li>Accès à tous les cours</li>
-                        <li>Téléchargement illimité</li>
-                        <li>Support prioritaire</li>
-                    </ul>
-                    <button class="btn btn-primary" data-plan="monthly">Choisir</button>
-                </div>
-                <div class="premium-plan">
-                    <h3>Trimestriel</h3>
-                    <div class="premium-price">49,99€ <span>/3 mois</span></div>
-                    <ul>
-                        <li>Accès à tous les cours</li>
-                        <li>Téléchargement illimité</li>
-                        <li>Support prioritaire</li>
-                        <li>Réduction de 15%</li>
-                    </ul>
-                    <button class="btn btn-primary" data-plan="quarterly">Choisir</button>
-                </div>
-                <div class="premium-plan">
-                    <h3>Annuel</h3>
-                    <div class="premium-price">149,99€ <span>/an</span></div>
-                    <ul>
-                        <li>Accès à tous les cours</li>
-                        <li>Téléchargement illimité</li>
-                        <li>Support prioritaire</li>
-                        <li>Réduction de 30%</li>
-                        <li>Accès aux événements exclusifs</li>
-                    </ul>
-                    <button class="btn btn-primary" data-plan="yearly">Choisir</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="payment-modal">
-        <div class="payment-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h2>Paiement</h2>
-            </div>
-            <div class="form-group">
-                <label for="paymentAmount">Montant à payer</label>
-                <input type="text" id="paymentAmount" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="cardName">Nom sur la carte</label>
-                <input type="text" id="cardName" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="cardNumber">Numéro de carte</label>
-                <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" required>
-            </div>
-            <div class="form-group">
-                <div style="display: flex; gap: 1rem;">
-                    <div style="flex: 1;">
-                        <label for="expDate">Date d'expiration</label>
-                        <input type="text" id="expDate" class="form-control" placeholder="MM/AA" required>
-                    </div>
-                    <div style="flex: 1;">
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" class="form-control" placeholder="123" required>
-                    </div>
-                </div>
-            </div>
-            <div class="payment-methods">
-                <div class="payment-method selected">
-                    <i class="fab fa-cc-visa" style="font-size: 2rem;"></i>
-                </div>
-                <div class="payment-method">
-                    <i class="fab fa-cc-mastercard" style="font-size: 2rem;"></i>
-                </div>
-                <div class="payment-method">
-                    <i class="fab fa-cc-paypal" style="font-size: 2rem;"></i>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Payer maintenant</button>
-        </div>
-    </div>
 
     <!-- Notification -->
     <div id="notification" class="notification"></div>
@@ -1423,6 +1282,13 @@
                         { name: "Annales BAC Chimie", file: "bac_chimie_annales.pdf", premium: true },
                         { name: "Tableau périodique", file: "chimie_tableau.pdf", premium: false }
                     ]
+                },
+                exams: {
+                    math: [
+                        { name: "BAC Mathématiques 2023", file: "bac_maths_2023.pdf", premium: false },
+                        { name: "BAC Mathématiques 2022", file: "bac_maths_2022.pdf", premium: false },
+                        { name: "BAC Mathématiques 2021", file: "bac_maths_2021.pdf", premium: true }
+                    ]
                 }
             },
             prepa: {
@@ -1456,6 +1322,12 @@
                         { name: "Exercices algorithmiques", file: "prepa_exos_algo.pdf", premium: false },
                         { name: "Projets Python", file: "prepa_projets_python.pdf", premium: true }
                     ]
+                },
+                exams: {
+                    math: [
+                        { name: "Concours X-ENS Mathématiques", file: "xens_maths.pdf", premium: true },
+                        { name: "Concours Centrale Mathématiques", file: "centrale_maths.pdf", premium: true }
+                    ]
                 }
             },
             ing: {
@@ -1488,6 +1360,11 @@
                         { name: "Circuits complexes", file: "ing_circuits.pdf", premium: false },
                         { name: "Systèmes embarqués", file: "ing_systemes_embarques.pdf", premium: true }
                     ]
+                },
+                exams: {
+                    aerospace: [
+                        { name: "Examen Aéronautique 2023", file: "aero_exam_2023.pdf", premium: true }
+                    ]
                 }
             },
             deg1: {
@@ -1512,6 +1389,11 @@
                     science: [
                         { name: "Expériences pratiques", file: "deg1_experiences.pdf", premium: false },
                         { name: "Fiches de révision", file: "deg1_fiches_science.pdf", premium: true }
+                    ]
+                },
+                exams: {
+                    math: [
+                        { name: "Examen Mathématiques 2023", file: "deg1_maths_2023.pdf", premium: true }
                     ]
                 }
             },
@@ -1541,6 +1423,188 @@
                         { name: "Simulations avancées", file: "uni_simulations_physique.pdf", premium: true },
                         { name: "Documents de recherche", file: "uni_documents_physique.pdf", premium: true }
                     ]
+                },
+                exams: {
+                    math: [
+                        { name: "Examen Master Mathématiques", file: "master_maths.pdf", premium: true }
+                    ]
+                }
+            },
+            Jpsy: {
+                title: "Jeux Psychotechniques",
+                courses: {
+                    logic: [
+                        { name: "Logique de base", file: "jpsy_logique.pdf", premium: false },
+                        { name: "Logique avancée", file: "jpsy_logique_avancee.pdf", premium: true }
+                    ],
+                    memory: [
+                        { name: "Techniques de mémorisation", file: "jpsy_memoire.pdf", premium: false },
+                        { name: "Exercices de mémoire", file: "jpsy_exercices_memoire.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    logic: [
+                        { name: "Tests de logique", file: "jpsy_tests_logique.pdf", premium: true },
+                        { name: "Solutions des tests", file: "jpsy_solutions_logique.pdf", premium: false }
+                    ],
+                    memory: [
+                        { name: "Tests de mémoire", file: "jpsy_tests_memoire.pdf", premium: true },
+                        { name: "Solutions des tests", file: "jpsy_solutions_memoire.pdf", premium: false }
+                    ]
+                },
+                exams: {
+                    logic: [
+                        { name: "Test de logique complet", file: "jpsy_full_logic.pdf", premium: true }
+                    ]
+                }
+            },
+            xens: {
+                title: "Concours X-ENS",
+                courses: {
+                    math: [
+                        { name: "Algèbre et géométrie", file: "xens_math1.pdf", premium: true },
+                        { name: "Analyse avancée", file: "xens_math2.pdf", premium: true },
+                        { name: "Probabilités et statistiques", file: "xens_probabilites.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Mécanique analytique", file: "xens_mecanique.pdf", premium: true },
+                        { name: "Électromagnétisme approfondi", file: "xens_electro.pdf", premium: true },
+                        { name: "Physique quantique", file: "xens_quantique.pdf", premium: true }
+                    ],
+                    computer: [
+                        { name: "Algorithmique avancée", file: "xens_algo.pdf", premium: true },
+                        { name: "Structures de données", file: "xens_structures.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Problèmes résolus X-ENS", file: "xens_maths_resolus.pdf", premium: true },
+                        { name: "Fiches de révision", file: "xens_fiches_maths.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Problèmes résolus X-ENS", file: "xens_physique_resolus.pdf", premium: true },
+                        { name: "Fiches de formules", file: "xens_fiches_physique.pdf", premium: true }
+                    ]
+                },
+                exams: {
+                    math: [
+                        { name: "Concours X-ENS Mathématiques 2023", file: "xens_maths_2023.pdf", premium: true },
+                        { name: "Concours X-ENS Mathématiques 2022", file: "xens_maths_2022.pdf", premium: true },
+                        { name: "Concours X-ENS Mathématiques 2021", file: "xens_maths_2021.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Concours X-ENS Physique 2023", file: "xens_physique_2023.pdf", premium: true },
+                        { name: "Concours X-ENS Physique 2022", file: "xens_physique_2022.pdf", premium: true }
+                    ]
+                }
+            },
+            centrale: {
+                title: "Concours Centrale-Supélec",
+                courses: {
+                    math: [
+                        { name: "Algèbre linéaire", file: "central_algebre.pdf", premium: true },
+                        { name: "Analyse réelle", file: "central_analyse.pdf", premium: true },
+                        { name: "Probabilités", file: "central_probabilites.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Mécanique des fluides", file: "central_fluides.pdf", premium: true },
+                        { name: "Thermodynamique", file: "central_thermo.pdf", premium: true },
+                        { name: "Électricité", file: "central_electricite.pdf", premium: true }
+                    ],
+                    computer: [
+                        { name: "Programmation C++", file: "central_cpp.pdf", premium: true },
+                        { name: "Bases de données", file: "central_bdd.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Annales corrigées", file: "central_annales_maths.pdf", premium: true },
+                        { name: "Méthodes de résolution", file: "central_methodes_maths.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Annales corrigées", file: "central_annales_physique.pdf", premium: true },
+                        { name: "Fiches de synthèse", file: "central_fiches_physique.pdf", premium: true }
+                    ]
+                },
+                exams: {
+                    math: [
+                        { name: "Concours Centrale Mathématiques 2023", file: "central_maths_2023.pdf", premium: true },
+                        { name: "Concours Centrale Mathématiques 2022", file: "central_maths_2022.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Concours Centrale Physique 2023", file: "central_physique_2023.pdf", premium: true },
+                        { name: "Concours Centrale Physique 2022", file: "central_physique_2022.pdf", premium: true }
+                    ]
+                }
+            },
+            mines: {
+                title: "Concours Mines-Ponts",
+                courses: {
+                    math: [
+                        { name: "Algèbre générale", file: "mines_algebre.pdf", premium: true },
+                        { name: "Analyse complexe", file: "mines_analyse.pdf", premium: true },
+                        { name: "Statistiques inférentielles", file: "mines_stats.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Ondes et vibrations", file: "mines_ondes.pdf", premium: true },
+                        { name: "Électrocinétique", file: "mines_electro.pdf", premium: true },
+                        { name: "Optique géométrique", file: "mines_optique.pdf", premium: true }
+                    ],
+                    computer: [
+                        { name: "Algorithmique avancée", file: "mines_algo.pdf", premium: true },
+                        { name: "Programmation Python", file: "mines_python.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Problèmes classiques", file: "mines_problemes_maths.pdf", premium: true },
+                        { name: "Méthodes de résolution", file: "mines_methodes_maths.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Problèmes classiques", file: "mines_problemes_physique.pdf", premium: true },
+                        { name: "Fiches de formules", file: "mines_fiches_physique.pdf", premium: true }
+                    ]
+                },
+                exams: {
+                    math: [
+                        { name: "Concours Mines-Ponts Mathématiques 2023", file: "mines_maths_2023.pdf", premium: true },
+                        { name: "Concours Mines-Ponts Mathématiques 2022", file: "mines_maths_2022.pdf", premium: true }
+                    ]
+                }
+            },
+            ccp: {
+                title: "Concours CCP",
+                courses: {
+                    math: [
+                        { name: "Algèbre élémentaire", file: "ccp_algebre.pdf", premium: true },
+                        { name: "Analyse réelle", file: "ccp_analyse.pdf", premium: true },
+                        { name: "Probabilités discrètes", file: "ccp_probabilites.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Mécanique du point", file: "ccp_mecanique.pdf", premium: true },
+                        { name: "Électromagnétisme", file: "ccp_electro.pdf", premium: true },
+                        { name: "Thermodynamique", file: "ccp_thermo.pdf", premium: true }
+                    ],
+                    computer: [
+                        { name: "Programmation C", file: "ccp_c.pdf", premium: true },
+                        { name: "Algorithmique", file: "ccp_algo.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Annales corrigées", file: "ccp_annales_maths.pdf", premium: true },
+                        { name: "Fiches de révision", file: "ccp_fiches_maths.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Annales corrigées", file: "ccp_annales_physique.pdf", premium: true },
+                        { name: "Fiches de synthèse", file: "ccp_fiches_physique.pdf", premium: true }
+                    ]
+                },
+                exams: {
+                    math: [
+                        { name: "Concours CCP Mathématiques 2023", file: "ccp_maths_2023.pdf", premium: true },
+                        { name: "Concours CCP Mathématiques 2022", file: "ccp_maths_2022.pdf", premium: true }
+                    ]
                 }
             }
         };
@@ -1563,12 +1627,18 @@
                 ing: "Ingénieries",
                 deg1: "Certificat du Premier Degré",
                 uni: "Programme Universitaire",
+                Jpsy: "Jeux Psychotechniques",
                 design: "Design Industriel",
                 webdev: "Création de site web",
                 tutoring: "Cours particuliers",
                 back: "Retour aux programmes",
                 courses: "Cours",
-                resources: "Ressources"
+                resources: "Ressources",
+                exams: "Annales",
+                xens: "Concours X-ENS",
+                centrale: "Concours Centrale-Supélec",
+                mines: "Concours Mines-Ponts",
+                ccp: "Concours CCP"
             },
             en: {
                 welcome: "Academic excellence at your fingertips",
@@ -1586,12 +1656,18 @@
                 ing: "Engineering",
                 deg1: "First Degree Certificate",
                 uni: "University Program",
+                Jpsy: "Psychotechnical Games",
                 design: "Industrial Design",
                 webdev: "Website Development",
                 tutoring: "Private Tutoring",
                 back: "Back to programs",
                 courses: "Courses",
-                resources: "Resources"
+                resources: "Resources",
+                exams: "Past Papers",
+                xens: "X-ENS Competition",
+                centrale: "Centrale-Supélec Competition",
+                mines: "Mines-Ponts Competition",
+                ccp: "CCP Competition"
             },
             es: {
                 welcome: "Excelencia académica a tu alcance",
@@ -1609,12 +1685,18 @@
                 ing: "Ingenierías",
                 deg1: "Certificado de Primer Grado",
                 uni: "Programa Universitario",
+                Jpsy: "Juegos Psicotécnicos",
                 design: "Diseño Industrial",
                 webdev: "Creación de sitios web",
                 tutoring: "Clases particulares",
                 back: "Volver a programas",
                 courses: "Cursos",
-                resources: "Recursos"
+                resources: "Recursos",
+                exams: "Exámenes Anteriores",
+                xens: "Concurso X-ENS",
+                centrale: "Concurso Centrale-Supélec",
+                mines: "Concurso Mines-Ponts",
+                ccp: "Concurso CCP"
             }
         };
 
@@ -1633,18 +1715,6 @@
         ];
 
         // DOM Elements
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const loginModal = document.getElementById('loginModal');
-        const registerModal = document.getElementById('registerModal');
-        const premiumModal = document.getElementById('premiumModal');
-        const paymentModal = document.getElementById('paymentModal');
-        const showRegister = document.getElementById('showRegister');
-        const showLogin = document.getElementById('showLogin');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const contactForm = document.getElementById('contactForm');
         const languageSelect = document.getElementById('languageSelect');
         const searchInput = document.getElementById('searchInput');
         const startBtn = document.getElementById('startBtn');
@@ -1654,8 +1724,10 @@
         const programTitle = document.getElementById('program-title');
         const coursesTab = document.getElementById('courses-tab');
         const resourcesTab = document.getElementById('resources-tab');
+        const examsTab = document.getElementById('exams-tab');
         const coursesContent = document.getElementById('courses-content');
         const resourcesContent = document.getElementById('resources-content');
+        const examsContent = document.getElementById('exams-content');
         const backButton = document.querySelector('.back-button');
         const tabButtons = document.querySelectorAll('.tab-btn');
         const featuresSection = document.querySelector('.features');
@@ -1663,6 +1735,28 @@
         const heroSection = document.getElementById('hero');
         const founderPhoto = document.getElementById('founder-photo');
         const fileGrid = document.getElementById('file-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const featureCards = document.querySelectorAll('.feature-card');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+
+        // Suggestions de recherche
+        const searchSuggestionsData = [
+            "BAC Scientifique",
+            "Classes Préparatoires",
+            "Concours X-ENS",
+            "Ingénierie Aéronautique",
+            "Cours particuliers",
+            "Design Industriel",
+            "Création de site web",
+            "Mathématiques",
+            "Physique",
+            "Chimie",
+            "Algorithmique",
+            "Programmation Python",
+            "Annales BAC",
+            "Concours Mines-Ponts",
+            "Jeux Psychotechniques"
+        ];
 
         // Modal functions
         function openModal(modal) {
@@ -1680,192 +1774,16 @@
             notification.textContent = message;
             notification.className = isSuccess ? 'notification success' : 'notification error';
             notification.style.display = 'block';
-
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
         }
-
-        // Close modals when clicking on X
-        document.querySelectorAll('.close').forEach(closeBtn => {
-            closeBtn.addEventListener('click', () => {
-                const modal = closeBtn.closest('.modal') ||
-                             closeBtn.closest('.premium-modal') ||
-                             closeBtn.closest('.payment-modal');
-                closeModal(modal);
-            });
-        });
-
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal') ||
-                e.target.classList.contains('premium-modal') ||
-                e.target.classList.contains('payment-modal')) {
-                closeModal(e.target);
-            }
-        });
-
-        // Switch between login and register modals
-        showRegister.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeModal(loginModal);
-            openModal(registerModal);
-        });
-
-        showLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeModal(registerModal);
-            openModal(loginModal);
-        });
-
-        // Login form submission
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            // Vérification dans localStorage
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(u => u.email === email && u.password === password);
-
-            if (user) {
-                currentUser = user;
-                currentUser.loggedIn = true; // Marquer comme connecté
-
-                // Mettre à jour le stockage
-                const userIndex = users.findIndex(u => u.email === email);
-                if (userIndex !== -1) {
-                    users[userIndex] = currentUser;
-                    localStorage.setItem('users', JSON.stringify(users));
-                }
-
-                updateUIForLoggedInUser();
-                closeModal(loginModal);
-                showNotification(`Bienvenue ${user.firstName} ${user.lastName}!`);
-            } else {
-                showNotification("Compte inexistant. Veuillez vous inscrire.", false);
-            }
-        });
-
-        // Register form submission
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('registerEmail').value;
-            const studyLevel = document.getElementById('studyLevel').value;
-            const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                showNotification("Les mots de passe ne correspondent pas", false);
-                return;
-            }
-
-            if (firstName && lastName && email && studyLevel && password) {
-                // Vérifier si l'utilisateur existe déjà
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                const userExists = users.some(u => u.email === email);
-
-                if (userExists) {
-                    showNotification("Un compte existe déjà avec cet email.", false);
-                    return;
-                }
-
-                // Créer un nouvel utilisateur
-                const newUser = {
-                    firstName,
-                    lastName,
-                    email,
-                    studyLevel,
-                    password,
-                    role: "student",
-                    premium: false,
-                    courses: [],
-                    loggedIn: true
-                };
-
-                users.push(newUser);
-                localStorage.setItem('users', JSON.stringify(users));
-
-                currentUser = newUser;
-                updateUIForLoggedInUser();
-                closeModal(registerModal);
-                showNotification(`Bienvenue ${firstName} ${lastName}! Votre compte a été créé avec succès.`);
-            } else {
-                showNotification("Veuillez remplir tous les champs", false);
-            }
-        });
-
-        // Update UI when user logs in
-        function updateUIForLoggedInUser() {
-            loginBtn.style.display = 'none';
-            registerBtn.style.display = 'none';
-            logoutBtn.style.display = 'inline-block';
-        }
-
-        // Logout function
-        logoutBtn.addEventListener('click', () => {
-            if (currentUser) {
-                // Mettre à jour l'état de connexion
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                const userIndex = users.findIndex(u => u.email === currentUser.email);
-                if (userIndex !== -1) {
-                    users[userIndex].loggedIn = false;
-                    localStorage.setItem('users', JSON.stringify(users));
-                }
-            }
-
-            currentUser = null;
-            loginBtn.style.display = 'inline-block';
-            registerBtn.style.display = 'inline-block';
-            logoutBtn.style.display = 'none';
-            showNotification("Vous avez été déconnecté avec succès.");
-        });
-
-        // Show login modal when clicking login button
-        loginBtn.addEventListener('click', () => {
-            openModal(loginModal);
-        });
-
-        // Show register modal when clicking register button
-        registerBtn.addEventListener('click', () => {
-            openModal(registerModal);
-        });
-
-        // Handle contact form submission
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
-            const subject = document.getElementById('contactSubject').value;
-            const message = document.getElementById('contactMessage').value;
-
-            if (name && email && subject && message) {
-                // Simuler l'envoi du message
-                showNotification("Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.");
-                contactForm.reset();
-            } else {
-                showNotification("Veuillez remplir tous les champs", false);
-            }
-        });
-
-        // Language selector
-        languageSelect.addEventListener('change', (e) => {
-            const lang = e.target.value;
-            changeLanguage(lang);
-        });
 
         // Discover button
         discoverBtn.addEventListener('click', () => {
             document.querySelector('#formations').scrollIntoView({
                 behavior: 'smooth'
             });
-        });
-
-        // Start button
-        startBtn.addEventListener('click', () => {
-            openModal(registerModal);
         });
 
         // Back to programs
@@ -1924,6 +1842,13 @@
                 resourcesContent.appendChild(subjectCard);
             }
 
+            // Load exams
+            examsContent.innerHTML = '';
+            for (const [subject, files] of Object.entries(program.exams)) {
+                const subjectCard = createSubjectCard(subject, files);
+                examsContent.appendChild(subjectCard);
+            }
+
             // Show program detail section
             programDetailSection.style.display = 'block';
             featuresSection.style.display = 'none';
@@ -1933,10 +1858,8 @@
         // Create subject card
         function createSubjectCard(subject, files) {
             const subjectName = capitalizeFirstLetter(subject);
-
             const card = document.createElement('div');
             card.className = 'subject-card';
-
             card.innerHTML = `
                 <div class="subject-header">
                     <div class="subject-icon">
@@ -1953,9 +1876,7 @@
                                 ${file.premium ? '<span class="premium-badge">Premium</span>' : ''}
                             </div>
                             <div class="file-actions">
-                                <button class="download-btn"
-                                    data-file="${file.file}"
-                                    ${file.premium ? 'premium-download' : ''}>
+                                <button class="download-btn" data-file="${file.file}" ${file.premium ? 'premium-download' : ''}>
                                     <i class="fas fa-download"></i>
                                 </button>
                             </div>
@@ -1963,7 +1884,6 @@
                     `).join('')}
                 </ul>
             `;
-
             return card;
         }
 
@@ -1982,15 +1902,6 @@
 
         // Initialize the page
         function init() {
-            // Vérifier si un utilisateur est déjà connecté
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const loggedInUser = users.find(u => u.loggedIn);
-
-            if (loggedInUser) {
-                currentUser = loggedInUser;
-                updateUIForLoggedInUser();
-            }
-
             // Initialiser le diaporama des photos du fondateur
             let founderPhotoIndex = 0;
             setInterval(() => {
@@ -2009,18 +1920,10 @@
             initFileGrid();
         }
 
-        // Toggle password visibility
-        document.querySelectorAll('.toggle-password').forEach(icon => {
-            icon.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const passwordInput = document.getElementById(targetId);
-                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                passwordInput.setAttribute('type', type);
-
-                // Toggle eye icon
-                this.classList.toggle('fa-eye');
-                this.classList.toggle('fa-eye-slash');
-            });
+        // Language selector
+        languageSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            changeLanguage(lang);
         });
 
         // Change language
@@ -2034,35 +1937,36 @@
             document.querySelector('#services .section-title').textContent = trans.services;
             document.querySelector('#fichiers .section-title').textContent = trans.files;
             document.querySelector('#contact .section-title').textContent = trans.contact;
-            document.getElementById('loginBtn').textContent = trans.login;
-            document.getElementById('registerBtn').textContent = trans.register;
-            document.getElementById('logoutBtn').textContent = trans.logout;
             document.querySelector('.back-button').innerHTML = `<i class="fas fa-arrow-left"></i> ${trans.back}`;
             document.querySelectorAll('.tab-btn').forEach((btn, index) => {
-                if(index === 0) btn.textContent = trans.courses;
-                if(index === 1) btn.textContent = trans.resources;
+                if (index === 0) btn.textContent = trans.courses;
+                if (index === 1) btn.textContent = trans.resources;
+                if (index === 2) btn.textContent = trans.exams;
             });
 
             // Mettre à jour les noms des programmes
-            document.querySelectorAll('.feature-card h3, .feature-card h4, .feature-card h5').forEach((el, index) => {
-                if(index === 0) el.textContent = trans.bac;
-                if(index === 1) el.textContent = trans.prepa;
-                if(index === 2) el.textContent = trans.ing;
-                if(index === 3) el.textContent = trans.deg1;
-                if(index === 4) el.textContent = trans.uni;
+            document.querySelectorAll('.feature-card h3').forEach((el, index) => {
+                if (index === 0) el.textContent = trans.bac;
+                if (index === 1) el.textContent = trans.prepa;
+                if (index === 2) el.textContent = trans.ing;
+                if (index === 3) el.textContent = trans.deg1;
+                if (index === 4) el.textContent = trans.uni;
+                if (index === 5) el.textContent = trans.Jpsy;
+                if (index === 6) el.textContent = trans.xens;
+                if (index === 7) el.textContent = trans.centrale;
+                if (index === 8) el.textContent = trans.mines;
+                if (index === 9) el.textContent = trans.ccp;
             });
 
             // Mettre à jour les noms des services
             document.querySelectorAll('.service-title').forEach((el, index) => {
-                if(index === 0) el.textContent = trans.design;
-                if(index === 1) el.textContent = trans.webdev;
-                if(index === 2) el.textContent = trans.tutoring;
+                if (index === 0) el.textContent = trans.design;
+                if (index === 1) el.textContent = trans.webdev;
+                if (index === 2) el.textContent = trans.tutoring;
             });
 
             // Mettre à jour le placeholder de recherche
             searchInput.placeholder = trans.search;
-
-            showNotification(`Langue changée en ${lang === 'fr' ? 'Français' : lang === 'en' ? 'Anglais' : 'Espagnol'}`);
         }
 
         // Initialize file grid
@@ -2073,11 +1977,12 @@
                 { name: "Annales BAC Scientifique", type: "PDF", size: "3.2 MB", file: "annales_bac.pdf", premium: true },
                 { name: "Cours de Chimie", type: "PDF", size: "2.1 MB", file: "chimie_cours.pdf" },
                 { name: "Concours Grandes Écoles", type: "PDF", size: "4.0 MB", file: "concours_grandes_ecoles.pdf", premium: true },
-                { name: "Projets Aérospatiaux", type: "PDF", size: "3.5 MB", file: "projets_aerospatiaux.pdf", premium: true }
+                { name: "Projets Aérospatiaux", type: "PDF", size: "3.5 MB", file: "projets_aerospatiaux.pdf", premium: true },
+                { name: "Concours X-ENS Mathématiques 2023", type: "PDF", size: "2.8 MB", file: "xens_maths_2023.pdf", premium: true },
+                { name: "Concours Centrale Physique 2023", type: "PDF", size: "3.1 MB", file: "central_physique_2023.pdf", premium: true }
             ];
 
             fileGrid.innerHTML = '';
-
             files.forEach(file => {
                 const fileCard = document.createElement('div');
                 fileCard.className = 'file-card';
@@ -2096,30 +2001,94 @@
         // Search functionality
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
-            const fileCards = document.querySelectorAll('.file-card');
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            suggestionsContainer.innerHTML = '';
 
-            fileCards.forEach(card => {
-                const fileName = card.querySelector('.file-name').textContent.toLowerCase();
-                if(fileName.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            if (searchTerm === '') {
+                suggestionsContainer.style.display = 'none';
+                return;
+            }
+
+            const filteredSuggestions = searchSuggestionsData.filter(item =>
+                item.toLowerCase().includes(searchTerm)
+            );
+
+            if (filteredSuggestions.length === 0) {
+                suggestionsContainer.style.display = 'none';
+                return;
+            }
+
+            filteredSuggestions.slice(0, 5).forEach(suggestion => {
+                const suggestionElement = document.createElement('div');
+                suggestionElement.className = 'search-suggestion-item';
+                suggestionElement.textContent = suggestion;
+                suggestionElement.addEventListener('click', () => {
+                    searchInput.value = suggestion;
+                    suggestionsContainer.style.display = 'none';
+                    performSearch(suggestion);
+                });
+                suggestionsContainer.appendChild(suggestionElement);
+            });
+
+            suggestionsContainer.style.display = 'block';
+        });
+
+        // Perform search when clicking on suggestion
+        function performSearch(term) {
+            // Simulate search action
+            showNotification(`Recherche pour "${term}" en cours...`);
+
+            // Scroll to relevant section
+            if (term.toLowerCase().includes('bac') || term.toLowerCase().includes('math')) {
+                document.querySelector('#formations').scrollIntoView({ behavior: 'smooth' });
+            } else if (term.toLowerCase().includes('service') || term.toLowerCase().includes('design')) {
+                document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });
+            } else if (term.toLowerCase().includes('fichier') || term.toLowerCase().includes('télécharger')) {
+                document.querySelector('#fichiers').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target !== searchInput) {
+                searchSuggestions.style.display = 'none';
+            }
+        });
+
+        // Program filters
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // Show/hide cards based on filter
+                featureCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else if (filter === 'concours') {
+                        if (card.getAttribute('data-category') === 'concours') {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    } else {
+                        if (card.getAttribute('data-program') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
             });
         });
 
         // Initialiser la page
         init();
-
-        // Payment method selection
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', () => {
-                document.querySelectorAll('.payment-method').forEach(m => {
-                    m.classList.remove('selected');
-                });
-                method.classList.add('selected');
-            });
-        });
     </script>
 </body>
 </html>
