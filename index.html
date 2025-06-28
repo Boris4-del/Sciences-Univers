@@ -22,6 +22,7 @@
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --border-radius: 8px;
+            --pi-color: #ff6b00;
         }
 
         * {
@@ -36,9 +37,40 @@
             color: var(--dark-color);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Header Styles */
+        /* Décoration π */
+        .pi-decoration {
+            position: absolute;
+            color: rgba(0, 74, 124, 0.05);
+            font-size: 15rem;
+            font-weight: 900;
+            font-family: 'Times New Roman', serif;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .pi-1 {
+            top: 100px;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .pi-2 {
+            bottom: 300px;
+            right: 5%;
+            transform: rotate(25deg);
+        }
+
+        .pi-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(10deg);
+            font-size: 20rem;
+        }
+
+        /* Header */
         header {
             background-color: var(--white);
             box-shadow: var(--shadow);
@@ -109,6 +141,7 @@
         .auth-buttons {
             display: flex;
             gap: 1rem;
+            align-items: center;
         }
 
         .btn {
@@ -142,6 +175,19 @@
             color: var(--white);
         }
 
+        /* Language Selector */
+        .language-selector {
+            margin-left: 1rem;
+        }
+
+        .language-selector select {
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
         /* Hero Section */
         .hero {
             padding: 12rem 5% 8rem;
@@ -161,6 +207,7 @@
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
@@ -373,11 +420,213 @@
             margin-bottom: 1rem;
         }
 
+        /* Courses Section */
+        .courses-section {
+            padding: 6rem 5%;
+            background-color: var(--light-color);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .course-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .course-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .course-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-buy {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-details {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        /* Premium Content */
+        .premium-badge {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 5%;
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-right: 1rem;
+            overflow: hidden;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-info p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
         /* File Upload Section */
         .upload-section {
             padding: 4rem 5%;
             background-color: var(--light-color);
-            display: none;
         }
 
         .upload-container {
@@ -431,6 +680,49 @@
             font-size: 1.2rem;
         }
 
+        /* Premium Modal */
+        .premium-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+        }
+
+        .premium-modal-content {
+            background-color: var(--white);
+            margin: 10% auto;
+            padding: 2rem;
+            width: 80%;
+            max-width: 600px;
+            border-radius: var(--border-radius);
+            position: relative;
+            text-align: center;
+        }
+
+        .premium-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .premium-plan {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .premium-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
@@ -453,18 +745,175 @@
                 font-size: 1rem;
             }
 
-            .features-grid, .dashboard-grid {
+            .features-grid, .dashboard-grid, .course-grid, .premium-plans {
                 grid-template-columns: 1fr;
             }
 
-            .modal-content {
+            .modal-content, .premium-modal-content {
                 width: 90%;
                 padding: 1.5rem;
             }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        /* File Download Section */
+        .file-download-section {
+            padding: 4rem 5%;
+            background-color: var(--light-color);
+        }
+
+        .file-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .file-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .file-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .file-name {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-type {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Payment Section */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+        }
+
+        .payment-content {
+            background-color: var(--white);
+            margin: 10% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            position: relative;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-method {
+            width: 80px;
+            height: 50px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .payment-method.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            color: white;
+            z-index: 4000;
+            display: none;
+            animation: slideIn 0.5s ease, fadeOut 0.5s ease 2.5s;
+        }
+
+        .notification.success {
+            background-color: var(--success-color);
+        }
+
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+
+        @keyframes slideIn {
+            from { right: -300px; opacity: 0; }
+            to { right: 20px; opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
     </style>
 </head>
 <body>
+    <!-- Décoration π -->
+    <div class="pi-decoration pi-1">π</div>
+    <div class="pi-decoration pi-2">π</div>
+    <div class="pi-decoration pi-3">π</div>
+
     <!-- Header -->
     <header>
         <div class="header-container">
@@ -475,10 +924,18 @@
             <div class="nav-links">
                 <a href="#">Accueil</a>
                 <a href="#formations">Formations</a>
-                <a href="#professeurs">Professeurs</a>
+                <a href="#cours">Cours</a>
+                <a href="#fichiers">Fichiers</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="auth-buttons">
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
                 <button id="loginBtn" class="btn btn-outline">Connexion</button>
                 <button id="registerBtn" class="btn btn-primary">Inscription</button>
                 <button id="logoutBtn" class="btn btn-outline" style="display: none;">Déconnexion</button>
@@ -491,8 +948,8 @@
         <div class="hero-content">
             <h1>L'excellence académique à portée de main</h1>
             <p>Rejoignez des milliers d'étudiants qui ont transformé leur parcours académique avec nos programmes d'excellence et notre accompagnement personnalisé.</p>
-            <button class="btn btn-primary btn-hero">Commencer maintenant</button>
-            <button class="btn btn-outline btn-hero">Découvrir nos formations</button>
+            <button class="btn btn-primary btn-hero" id="startBtn">Commencer maintenant</button>
+            <button class="btn btn-outline btn-hero" id="discoverBtn">Découvrir nos formations</button>
         </div>
     </section>
 
@@ -517,6 +974,250 @@
             </div>
         </div>
     </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section" id="cours">
+        <h2 class="section-title">Nos cours par année</h2>
+        <div class="course-grid">
+            <!-- Année 1 -->
+            <div class="course-card">
+                <div class="course-header">
+                    <h3 class="course-title">Première Année</h3>
+                    <span class="course-price">249€</span>
+                </div>
+                <div class="course-content">
+                    <p>Programme complet pour la première année avec tous les cours fondamentaux.</p>
+                    <ul>
+                        <li>Mathématiques - 12 cours <span class="premium-badge">Premium</span></li>
+                        <li>Physique - 10 cours</li>
+                        <li>Chimie - 8 cours <span class="premium-badge">Premium</span></li>
+                        <li>Examens blancs - 5 sessions</li>
+                    </ul>
+                </div>
+                <div class="course-actions">
+                    <button class="btn btn-buy" data-course="1">Acheter</button>
+                    <button class="btn btn-details" data-course="1">Détails</button>
+                </div>
+            </div>
+
+            <!-- Année 2 -->
+            <div class="course-card">
+                <div class="course-header">
+                    <h3 class="course-title">Deuxième Année</h3>
+                    <span class="course-price">299€</span>
+                </div>
+                <div class="course-content">
+                    <p>Programme avancé pour la deuxième année avec des cours spécialisés.</p>
+                    <ul>
+                        <li>Mathématiques avancées - 15 cours <span class="premium-badge">Premium</span></li>
+                        <li>Physique quantique - 12 cours</li>
+                        <li>Projets pratiques - 10 sessions</li>
+                        <li>Préparation aux concours - 8 sessions <span class="premium-badge">Premium</span></li>
+                    </ul>
+                </div>
+                <div class="course-actions">
+                    <button class="btn btn-buy" data-course="2">Acheter</button>
+                    <button class="btn btn-details" data-course="2">Détails</button>
+                </div>
+            </div>
+
+            <!-- Année 3 -->
+            <div class="course-card">
+                <div class="course-header">
+                    <h3 class="course-title">Troisième Année</h3>
+                    <span class="course-price">349€</span>
+                </div>
+                <div class="course-content">
+                    <p>Programme expert pour la troisième année avec des cours de haut niveau.</p>
+                    <ul>
+                        <li>Recherche scientifique - 10 cours <span class="premium-badge">Premium</span></li>
+                        <li>Projets de fin d'études - 15 sessions</li>
+                        <li>Stages en entreprise - 10 semaines</li>
+                        <li>Préparation aux examens finaux - 12 sessions <span class="premium-badge">Premium</span></li>
+                    </ul>
+                </div>
+                <div class="course-actions">
+                    <button class="btn btn-buy" data-course="3">Acheter</button>
+                    <button class="btn btn-details" data-course="3">Détails</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- File Download Section -->
+    <section class="file-download-section" id="fichiers">
+        <div class="file-container">
+            <h2 class="section-title">Documents à télécharger</h2>
+            <p>Téléchargez nos ressources pédagogiques pour compléter votre formation.</p>
+
+            <div class="file-grid">
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4 class="file-name">Cours de Mathématiques</h4>
+                    <p class="file-type">PDF - 2.4 MB</p>
+                    <a href="#" class="download-btn" data-file="maths_cours.pdf">Télécharger</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4 class="file-name">Exercices de Physique</h4>
+                    <p class="file-type">PDF - 1.8 MB</p>
+                    <a href="#" class="download-btn" data-file="physique_exercices.pdf">Télécharger</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4 class="file-name">Annales BAC Scientifique</h4>
+                    <p class="file-type">PDF - 3.2 MB <span class="premium-badge">Premium</span></p>
+                    <a href="#" class="download-btn premium-download" data-file="annales_bac.pdf">Télécharger</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4 class="file-name">Cours de Chimie</h4>
+                    <p class="file-type">PDF - 2.1 MB</p>
+                    <a href="#" class="download-btn" data-file="chimie_cours.pdf">Télécharger</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4 class="file-name">Concours Grandes Écoles</h4>
+                    <p class="file-type">PDF - 4.0 MB <span class="premium-badge">Premium</span></p>
+                    <a href="#" class="download-btn premium-download" data-file="concours_grandes_ecoles.pdf">Télécharger</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4 class="file-name">Projets Aérospatiaux</h4>
+                    <p class="file-type">PDF - 3.5 MB <span class="premium-badge">Premium</span></p>
+                    <a href="#" class="download-btn premium-download" data-file="projets_aerospatiaux.pdf">Télécharger</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Notre équipe</h3>
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Koudaya Kossi Boris">
+                    </div>
+                    <div class="team-info">
+                        <h4>Koudaya Kossi Boris</h4>
+                        <p>Fondateur et Ingénieur Aéronautique</p>
+                        <p>kossi.boris@sciencesunivers.com</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Marie Dupont">
+                    </div>
+                    <div class="team-info">
+                        <h4>Marie Dupont</h4>
+                        <p>Responsable Pédagogique</p>
+                        <p>marie.dupont@sciencesunivers.com</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Jean-Luc Martin">
+                    </div>
+                    <div class="team-info">
+                        <h4>Jean-Luc Martin</h4>
+                        <p>Coordinateur des Formations</p>
+                        <p>jeanluc.martin@sciencesunivers.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Envoyez-nous un message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Nom</label>
+                        <input type="text" id="contactName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Sujet</label>
+                        <select id="contactSubject" class="form-control" required>
+                            <option value="">Sélectionnez un sujet</option>
+                            <option value="support">Support technique</option>
+                            <option value="formation">Information sur les formations</option>
+                            <option value="payment">Problème de paiement</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Sciences Univers</h3>
+                <p>Plateforme éducative premium pour l'excellence académique.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Préparation BAC</a></li>
+                    <li><a href="#">Classes Prépa</a></li>
+                    <li><a href="#">Ingénierie</a></li>
+                    <li><a href="#">Concours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Cours</a></li>
+                    <li><a href="#">Exercices</a></li>
+                    <li><a href="#">Annales</a></li>
+                    <li><a href="#">Vidéos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Sciences, 75005 Paris</p>
+                <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contact@sciencesunivers.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Sciences Univers. Tous droits réservés.</p>
+        </div>
+    </footer>
 
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
@@ -588,80 +1289,137 @@
         </div>
     </div>
 
-    <!-- Dashboard Section -->
-    <section class="dashboard">
-        <div class="dashboard-header">
-            <h2 class="welcome-message">Bienvenue, <span id="userName">Utilisateur</span></h2>
-            <div class="user-info">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
+    <!-- Premium Modal -->
+    <div id="premiumModal" class="premium-modal">
+        <div class="premium-modal-content">
+            <span class="close">&times;</span>
+            <h2>Choisissez votre abonnement Premium</h2>
+            <p>Accédez à tous nos contenus exclusifs avec un abonnement premium</p>
+            <div class="premium-plans">
+                <div class="premium-plan">
+                    <h3>Mensuel</h3>
+                    <div class="premium-price">19,99€ <span>/mois</span></div>
+                    <ul>
+                        <li>Accès à tous les cours</li>
+                        <li>Téléchargement illimité</li>
+                        <li>Support prioritaire</li>
+                    </ul>
+                    <button class="btn btn-primary" data-plan="monthly">Choisir</button>
                 </div>
-                <div>
-                    <p id="userEmail">user@example.com</p>
-                    <p id="userLevel">Niveau d'étude</p>
+                <div class="premium-plan">
+                    <h3>Trimestriel</h3>
+                    <div class="premium-price">49,99€ <span>/3 mois</span></div>
+                    <ul>
+                        <li>Accès à tous les cours</li>
+                        <li>Téléchargement illimité</li>
+                        <li>Support prioritaire</li>
+                        <li>Réduction de 15%</li>
+                    </ul>
+                    <button class="btn btn-primary" data-plan="quarterly">Choisir</button>
+                </div>
+                <div class="premium-plan">
+                    <h3>Annuel</h3>
+                    <div class="premium-price">149,99€ <span>/an</span></div>
+                    <ul>
+                        <li>Accès à tous les cours</li>
+                        <li>Téléchargement illimité</li>
+                        <li>Support prioritaire</li>
+                        <li>Réduction de 30%</li>
+                        <li>Accès aux événements exclusifs</li>
+                    </ul>
+                    <button class="btn btn-primary" data-plan="yearly">Choisir</button>
                 </div>
             </div>
         </div>
-        <div class="dashboard-grid">
-            <div class="dashboard-card">
-                <h3>Mes formations</h3>
-                <p>Accédez à vos formations en cours et suivez votre progression.</p>
-                <button class="btn btn-primary" id="showFormations">Voir mes formations</button>
-            </div>
-            <div class="dashboard-card">
-                <h3>Télécharger des ressources</h3>
-                <p>Accédez à notre bibliothèque de ressources pédagogiques.</p>
-                <button class="btn btn-primary" id="showUpload">Télécharger un fichier</button>
-            </div>
-            <div class="dashboard-card">
-                <h3>Paramètres du compte</h3>
-                <p>Gérez les informations de votre compte et vos préférences.</p>
-                <button class="btn btn-primary">Modifier le profil</button>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- File Upload Section -->
-    <section class="upload-section">
-        <div class="upload-container">
-            <div class="upload-header">
-                <h2>Téléchargement de fichiers</h2>
-                <p>Téléchargez vos ressources pédagogiques ou partagez des documents avec vos professeurs.</p>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Paiement</h2>
             </div>
-            <form id="uploadForm" class="upload-form">
-                <div class="form-group">
-                    <label for="fileUpload">Sélectionnez un fichier</label>
-                    <input type="file" id="fileUpload" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="fileDescription">Description</label>
-                    <textarea id="fileDescription" class="form-control" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="fileCategory">Catégorie</label>
-                    <select id="fileCategory" class="form-control" required>
-                        <option value="">Sélectionnez une catégorie</option>
-                        <option value="cours">Cours</option>
-                        <option value="exercices">Exercices</option>
-                        <option value="annales">Annales</option>
-                        <option value="autres">Autres</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Télécharger</button>
-            </form>
-            <div class="file-list">
-                <h3>Vos fichiers récents</h3>
-                <div id="fileList">
-                    <!-- Les fichiers seront affichés ici -->
+            <div class="form-group">
+                <label for="paymentAmount">Montant à payer</label>
+                <input type="text" id="paymentAmount" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="cardName">Nom sur la carte</label>
+                <input type="text" id="cardName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Numéro de carte</label>
+                <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-group">
+                <div style="display: flex; gap: 1rem;">
+                    <div style="flex: 1;">
+                        <label for="expDate">Date d'expiration</label>
+                        <input type="text" id="expDate" class="form-control" placeholder="MM/AA" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="form-control" placeholder="123" required>
+                    </div>
                 </div>
             </div>
+            <div class="payment-methods">
+                <div class="payment-method selected">
+                    <i class="fab fa-cc-visa" style="font-size: 2rem;"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-mastercard" style="font-size: 2rem;"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-paypal" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Payer maintenant</button>
         </div>
-    </section>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
 
     <script>
         // Variables globales
         let currentUser = null;
-        let files = [];
+        let courses = [
+            {
+                id: 1,
+                title: "Première Année",
+                price: 249,
+                content: [
+                    { name: "Mathématiques - 12 cours", premium: true, file: "maths_annee1.pdf" },
+                    { name: "Physique - 10 cours", premium: false, file: "physique_annee1.pdf" },
+                    { name: "Chimie - 8 cours", premium: true, file: "chimie_annee1.pdf" },
+                    { name: "Examens blancs - 5 sessions", premium: false, file: "examens_annee1.pdf" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Deuxième Année",
+                price: 299,
+                content: [
+                    { name: "Mathématiques avancées - 15 cours", premium: true, file: "maths_avancees.pdf" },
+                    { name: "Physique quantique - 12 cours", premium: false, file: "physique_quantique.pdf" },
+                    { name: "Projets pratiques - 10 sessions", premium: false, file: "projets_pratiques.pdf" },
+                    { name: "Préparation aux concours - 8 sessions", premium: true, file: "prepa_concours.pdf" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Troisième Année",
+                price: 349,
+                content: [
+                    { name: "Recherche scientifique - 10 cours", premium: true, file: "recherche_scientifique.pdf" },
+                    { name: "Projets de fin d'études - 15 sessions", premium: false, file: "projets_fin_etudes.pdf" },
+                    { name: "Stages en entreprise - 10 semaines", premium: false, file: "stages_entreprise.pdf" },
+                    { name: "Préparation aux examens finaux - 12 sessions", premium: true, file: "prepa_examens.pdf" }
+                ]
+            }
+        ];
 
         // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
@@ -669,39 +1427,59 @@
         const logoutBtn = document.getElementById('logoutBtn');
         const loginModal = document.getElementById('loginModal');
         const registerModal = document.getElementById('registerModal');
+        const premiumModal = document.getElementById('premiumModal');
+        const paymentModal = document.getElementById('paymentModal');
         const showRegister = document.getElementById('showRegister');
         const showLogin = document.getElementById('showLogin');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
-        const uploadForm = document.getElementById('uploadForm');
-        const dashboardSection = document.querySelector('.dashboard');
-        const uploadSection = document.querySelector('.upload-section');
-        const userName = document.getElementById('userName');
-        const userEmail = document.getElementById('userEmail');
-        const userLevel = document.getElementById('userLevel');
-        const showUpload = document.getElementById('showUpload');
-        const showFormations = document.getElementById('showFormations');
-        const fileList = document.getElementById('fileList');
+        const contactForm = document.getElementById('contactForm');
+        const languageSelect = document.getElementById('languageSelect');
+        const buyButtons = document.querySelectorAll('.btn-buy');
+        const premiumBadges = document.querySelectorAll('.premium-badge');
+        const downloadBtns = document.querySelectorAll('.download-btn');
+        const premiumDownloadBtns = document.querySelectorAll('.premium-download');
+        const startBtn = document.getElementById('startBtn');
+        const discoverBtn = document.getElementById('discoverBtn');
+        const notification = document.getElementById('notification');
 
         // Modal functions
         function openModal(modal) {
             modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modal) {
             modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Show notification
+        function showNotification(message, isSuccess = true) {
+            notification.textContent = message;
+            notification.className = isSuccess ? 'notification success' : 'notification error';
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
         }
 
         // Close modals when clicking on X
         document.querySelectorAll('.close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
-                closeModal(closeBtn.closest('.modal'));
+                const modal = closeBtn.closest('.modal') ||
+                             closeBtn.closest('.premium-modal') ||
+                             closeBtn.closest('.payment-modal');
+                closeModal(modal);
             });
         });
 
         // Close modals when clicking outside
         window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
+            if (e.target.classList.contains('modal') ||
+                e.target.classList.contains('premium-modal') ||
+                e.target.classList.contains('payment-modal')) {
                 closeModal(e.target);
             }
         });
@@ -725,21 +1503,26 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
-            // Simuler une connexion réussie
-            if (email && password) {
-                currentUser = {
-                    firstName: "Jean",
-                    lastName: "Dupont",
-                    email: email,
-                    studyLevel: "Classes préparatoires",
-                    role: "student"
-                };
+            // Vérification dans localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                currentUser = user;
+                currentUser.loggedIn = true; // Marquer comme connecté
+
+                // Mettre à jour le stockage
+                const userIndex = users.findIndex(u => u.email === email);
+                if (userIndex !== -1) {
+                    users[userIndex] = currentUser;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
 
                 updateUIForLoggedInUser();
                 closeModal(loginModal);
-                showDashboard();
+                showNotification(`Bienvenue ${user.firstName} ${user.lastName}!`);
             } else {
-                alert("Veuillez remplir tous les champs");
+                showNotification("Compte inexistant. Veuillez vous inscrire.", false);
             }
         });
 
@@ -754,24 +1537,42 @@
             const confirmPassword = document.getElementById('confirmPassword').value;
 
             if (password !== confirmPassword) {
-                alert("Les mots de passe ne correspondent pas");
+                showNotification("Les mots de passe ne correspondent pas", false);
                 return;
             }
 
             if (firstName && lastName && email && studyLevel && password) {
-                currentUser = {
+                // Vérifier si l'utilisateur existe déjà
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const userExists = users.some(u => u.email === email);
+
+                if (userExists) {
+                    showNotification("Un compte existe déjà avec cet email.", false);
+                    return;
+                }
+
+                // Créer un nouvel utilisateur
+                const newUser = {
                     firstName,
                     lastName,
                     email,
                     studyLevel,
-                    role: "student"
+                    password,
+                    role: "student",
+                    premium: false,
+                    courses: [],
+                    loggedIn: true
                 };
 
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                currentUser = newUser;
                 updateUIForLoggedInUser();
                 closeModal(registerModal);
-                showDashboard();
+                showNotification(`Bienvenue ${firstName} ${lastName}! Votre compte a été créé avec succès.`);
             } else {
-                alert("Veuillez remplir tous les champs");
+                showNotification("Veuillez remplir tous les champs", false);
             }
         });
 
@@ -780,111 +1581,26 @@
             loginBtn.style.display = 'none';
             registerBtn.style.display = 'none';
             logoutBtn.style.display = 'inline-block';
-
-            userName.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
-            userEmail.textContent = currentUser.email;
-            userLevel.textContent = currentUser.studyLevel;
         }
 
         // Logout function
         logoutBtn.addEventListener('click', () => {
+            if (currentUser) {
+                // Mettre à jour l'état de connexion
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(u => u.email === currentUser.email);
+                if (userIndex !== -1) {
+                    users[userIndex].loggedIn = false;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+            }
+
             currentUser = null;
             loginBtn.style.display = 'inline-block';
             registerBtn.style.display = 'inline-block';
             logoutBtn.style.display = 'none';
-            hideDashboard();
-            hideUploadSection();
+            showNotification("Vous avez été déconnecté avec succès.");
         });
-
-        // Show dashboard
-        function showDashboard() {
-            dashboardSection.style.display = 'block';
-            uploadSection.style.display = 'none';
-        }
-
-        // Hide dashboard
-        function hideDashboard() {
-            dashboardSection.style.display = 'none';
-        }
-
-        // Show upload section
-        showUpload.addEventListener('click', () => {
-            uploadSection.style.display = 'block';
-            dashboardSection.style.display = 'none';
-        });
-
-        // Show formations
-        showFormations.addEventListener('click', () => {
-            document.getElementById('formations').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Handle file upload
-        uploadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const fileInput = document.getElementById('fileUpload');
-            const fileDescription = document.getElementById('fileDescription').value;
-            const fileCategory = document.getElementById('fileCategory').value;
-
-            if (!fileInput.files.length) {
-                alert("Veuillez sélectionner un fichier");
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const fileSize = (file.size / 1024).toFixed(2); // Size in KB
-
-            // Simulate file upload
-            const newFile = {
-                id: Date.now(),
-                name: file.name,
-                size: fileSize,
-                description: fileDescription,
-                category: fileCategory,
-                date: new Date().toLocaleDateString()
-            };
-
-            files.push(newFile);
-            displayFiles();
-            alert("Fichier téléchargé avec succès!");
-            uploadForm.reset();
-        });
-
-        // Display uploaded files
-        function displayFiles() {
-            fileList.innerHTML = '';
-
-            if (files.length === 0) {
-                fileList.innerHTML = '<p>Aucun fichier téléchargé</p>';
-                return;
-            }
-
-            files.forEach(file => {
-                const fileElement = document.createElement('div');
-                fileElement.className = 'file-item';
-                fileElement.innerHTML = `
-                    <div class="file-info">
-                        <i class="fas fa-file-alt"></i>
-                        <div>
-                            <h4>${file.name}</h4>
-                            <p>${file.category} | ${file.size} Ko | ${file.date}</p>
-                        </div>
-                    </div>
-                    <div class="file-actions">
-                        <button><i class="fas fa-download"></i></button>
-                        <button onclick="deleteFile(${file.id})"><i class="fas fa-trash"></i></button>
-                    </div>
-                `;
-                fileList.appendChild(fileElement);
-            });
-        }
-
-        // Delete file function
-        window.deleteFile = function(id) {
-            if (confirm("Êtes-vous sûr de vouloir supprimer ce fichier?")) {
-                files = files.filter(file => file.id !== id);
-                displayFiles();
-            }
-        };
 
         // Show login modal when clicking login button
         loginBtn.addEventListener('click', () => {
@@ -896,9 +1612,230 @@
             openModal(registerModal);
         });
 
+        // Handle premium content clicks
+        premiumBadges.forEach(badge => {
+            badge.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!currentUser) {
+                    showNotification("Veuillez vous connecter pour accéder au contenu premium", false);
+                    openModal(loginModal);
+                } else if (!currentUser.premium) {
+                    openModal(premiumModal);
+                }
+            });
+        });
+
+        // Handle buy buttons
+        buyButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const courseId = parseInt(button.getAttribute('data-course'));
+                const course = courses.find(c => c.id === courseId);
+
+                if (!currentUser) {
+                    showNotification("Veuillez vous connecter pour acheter un cours.", false);
+                    openModal(loginModal);
+                    return;
+                }
+
+                // Ouvrir le modal de paiement
+                document.getElementById('paymentAmount').value = `${course.price}€ - ${course.title}`;
+                openModal(paymentModal);
+
+                // Gérer le paiement
+                const payButton = document.querySelector('#paymentModal .btn-primary');
+                payButton.onclick = function() {
+                    // Valider les informations de paiement
+                    const cardName = document.getElementById('cardName').value;
+                    const cardNumber = document.getElementById('cardNumber').value;
+                    const expDate = document.getElementById('expDate').value;
+                    const cvv = document.getElementById('cvv').value;
+
+                    if (!cardName || !cardNumber || !expDate || !cvv) {
+                        showNotification("Veuillez remplir tous les champs de paiement", false);
+                        return;
+                    }
+
+                    // Simuler un paiement réussi
+                    setTimeout(() => {
+                        // Ajouter le cours à l'utilisateur
+                        currentUser.courses.push(course);
+
+                        // Mettre à jour les utilisateurs dans localStorage
+                        const users = JSON.parse(localStorage.getItem('users')) || [];
+                        const userIndex = users.findIndex(u => u.email === currentUser.email);
+                        if (userIndex !== -1) {
+                            users[userIndex] = currentUser;
+                            localStorage.setItem('users', JSON.stringify(users));
+                        }
+
+                        closeModal(paymentModal);
+                        showNotification(`Paiement réussi! Vous avez acheté le cours "${course.title}".`);
+
+                        // Envoyer l'argent au créateur (simulé)
+                        console.log(`Transfert de ${course.price}€ vers le compte du créateur`);
+                    }, 1500);
+                };
+            });
+        });
+
+        // Handle file downloads
+        downloadBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const fileName = btn.getAttribute('data-file');
+
+                if (!currentUser && btn.classList.contains('premium-download')) {
+                    showNotification("Vous devez être connecté pour télécharger ce contenu premium", false);
+                    openModal(loginModal);
+                    return;
+                }
+
+                if (btn.classList.contains('premium-download') && currentUser && !currentUser.premium) {
+                    showNotification("Vous devez être abonné premium pour télécharger ce contenu", false);
+                    openModal(premiumModal);
+                    return;
+                }
+
+                // Simuler le téléchargement
+                showNotification(`Téléchargement de "${fileName}" en cours...`);
+
+                // Créer un lien de téléchargement fictif
+                setTimeout(() => {
+                    showNotification(`Téléchargement de "${fileName}" terminé!`);
+                }, 2000);
+            });
+        });
+
+        // Handle premium subscription
+        document.querySelectorAll('.premium-plan .btn-primary').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const plan = btn.getAttribute('data-plan');
+                let amount = 0;
+
+                switch(plan) {
+                    case 'monthly': amount = 19.99; break;
+                    case 'quarterly': amount = 49.99; break;
+                    case 'yearly': amount = 149.99; break;
+                }
+
+                if (!currentUser) {
+                    showNotification("Veuillez vous connecter pour souscrire à un abonnement premium", false);
+                    openModal(loginModal);
+                    return;
+                }
+
+                // Ouvrir le modal de paiement
+                document.getElementById('paymentAmount').value = `${amount}€ - Abonnement ${plan}`;
+                openModal(paymentModal);
+
+                // Gérer le paiement
+                const payButton = document.querySelector('#paymentModal .btn-primary');
+                payButton.onclick = function() {
+                    // Valider les informations de paiement
+                    const cardName = document.getElementById('cardName').value;
+                    const cardNumber = document.getElementById('cardNumber').value;
+                    const expDate = document.getElementById('expDate').value;
+                    const cvv = document.getElementById('cvv').value;
+
+                    if (!cardName || !cardNumber || !expDate || !cvv) {
+                        showNotification("Veuillez remplir tous les champs de paiement", false);
+                        return;
+                    }
+
+                    // Simuler un paiement réussi
+                    setTimeout(() => {
+                        // Mettre à jour le statut premium
+                        currentUser.premium = true;
+
+                        // Mettre à jour les utilisateurs dans localStorage
+                        const users = JSON.parse(localStorage.getItem('users')) || [];
+                        const userIndex = users.findIndex(u => u.email === currentUser.email);
+                        if (userIndex !== -1) {
+                            users[userIndex] = currentUser;
+                            localStorage.setItem('users', JSON.stringify(users));
+                        }
+
+                        closeModal(premiumModal);
+                        closeModal(paymentModal);
+                        showNotification(`Paiement réussi! Vous êtes maintenant abonné premium.`);
+
+                        // Envoyer l'argent au créateur (simulé)
+                        console.log(`Transfert de ${amount}€ vers le compte du créateur`);
+                    }, 1500);
+                };
+            });
+        });
+
+        // Handle contact form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+
+            if (name && email && subject && message) {
+                // Simuler l'envoi du message
+                showNotification("Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.");
+                contactForm.reset();
+            } else {
+                showNotification("Veuillez remplir tous les champs", false);
+            }
+        });
+
+        // Language selector
+        languageSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            let message = "Langue changée en ";
+
+            if (lang === 'fr') {
+                message += "Français";
+            } else if (lang === 'en') {
+                message += "Anglais";
+            } else if (lang === 'es') {
+                message += "Espagnol";
+            }
+
+            showNotification(message);
+        });
+
+        // Discover button
+        discoverBtn.addEventListener('click', () => {
+            document.querySelector('#formations').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Start button
+        startBtn.addEventListener('click', () => {
+            openModal(registerModal);
+        });
+
         // Initialize the page
-        hideDashboard();
-        hideUploadSection();
+        function init() {
+            // Vérifier si un utilisateur est déjà connecté
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const loggedInUser = users.find(u => u.loggedIn);
+
+            if (loggedInUser) {
+                currentUser = loggedInUser;
+                updateUIForLoggedInUser();
+            }
+        }
+
+        // Initialiser la page
+        init();
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', () => {
+                document.querySelectorAll('.payment-method').forEach(m => {
+                    m.classList.remove('selected');
+                });
+                method.classList.add('selected');
+            });
+        });
     </script>
 </body>
 </html>
