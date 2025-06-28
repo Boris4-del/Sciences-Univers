@@ -262,6 +262,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
+            cursor: pointer;
         }
 
         .feature-card:hover {
@@ -277,6 +278,180 @@
 
         .feature-card h3 {
             margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Program Detail Section */
+        .program-detail {
+            display: none;
+            padding: 6rem 5%;
+            background-color: var(--light-color);
+        }
+
+        .program-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-button i {
+            transition: var(--transition);
+        }
+
+        .back-button:hover i {
+            transform: translateX(-5px);
+        }
+
+        .program-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .subject-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .subject-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .file-icon {
+            color: var(--accent-color);
+        }
+
+        .file-name {
+            font-weight: 500;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .download-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
             color: var(--primary-color);
         }
 
@@ -723,110 +898,7 @@
             margin: 1rem 0;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .features-grid, .dashboard-grid, .course-grid, .premium-plans {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content, .premium-modal-content {
-                width: 90%;
-                padding: 1.5rem;
-            }
-
-            .contact-container {
-                flex-direction: column;
-            }
-        }
-
-        /* File Download Section */
-        .file-download-section {
-            padding: 4rem 5%;
-            background-color: var(--light-color);
-        }
-
-        .file-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .file-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .file-card {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .file-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .file-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .file-name {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .file-type {
-            font-size: 0.9rem;
-            color: var(--dark-color);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .download-btn:hover {
-            background-color: var(--primary-color);
-        }
-
-        /* Payment Section */
+        /* Payment Modal */
         .payment-modal {
             display: none;
             position: fixed;
@@ -906,6 +978,46 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features-grid, .dashboard-grid, .course-grid, .premium-plans, .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content, .premium-modal-content {
+                width: 90%;
+                padding: 1.5rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .program-tabs {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -922,7 +1034,7 @@
                 <span>Sciences Univers</span>
             </a>
             <div class="nav-links">
-                <a href="#">Accueil</a>
+                <a href="#" class="home-link">Accueil</a>
                 <a href="#formations">Formations</a>
                 <a href="#cours">Cours</a>
                 <a href="#fichiers">Fichiers</a>
@@ -957,29 +1069,66 @@
     <section class="features" id="formations">
         <h2 class="section-title">Nos programmes phares</h2>
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card" data-program="bac">
                 <i class="fas fa-book feature-icon"></i>
                 <h3>Préparation BAC Scientifique</h3>
                 <p>Un programme complet couvrant toutes les matières scientifiques avec des cours approfondis, des exercices pratiques et des examens blancs.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-program="prepa">
                 <i class="fas fa-chalkboard-teacher feature-icon"></i>
                 <h3>Classes Préparatoires</h3>
-                <p>Préparation intensive aux concours des Grandes Écoles avec des professeurs expérimentés et un suivi personnalisé.</p>
+                <p>Préparation intensive aux concours des Grandes Écoles.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-program="ing">
                 <i class="fas fa-rocket feature-icon"></i>
-                <h3>Ingénierie Aérospatiale</h3>
+                <h3>Ingénieries</h3>
                 <p>Formation spécialisée pour les étudiants en écoles d'ingénieurs avec des projets concrets et des stages en entreprise.</p>
+            </div>
+            <div class="feature-card" data-program="deg1">
+                <i class="fas fa-book feature-icon"></i>
+                <h4>Certificat du Premier Degré</h4>
+                <p>Des exercices pratiques, des examens nationaux et internationaux</p>
+            </div>
+            <div class="feature-card" data-program="uni">
+                <i class="fas fa-book feature-icon"></i>
+                <h5>Programme Universitaire</h5>
+                <p>Des sujets corrigés de DUT, Licence, Master, Doctorat, DEUG, ...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Detail Section -->
+    <section class="program-detail" id="program-detail">
+        <div class="program-header">
+            <button class="back-button">
+                <i class="fas fa-arrow-left"></i> Retour aux programmes
+            </button>
+            <h2 class="section-title" id="program-title"></h2>
+        </div>
+        
+        <div class="program-tabs">
+            <button class="tab-btn active" data-tab="courses">Cours</button>
+            <button class="tab-btn" data-tab="resources">Ressources</button>
+        </div>
+        
+        <div class="tab-content active" id="courses-tab">
+            <div class="subject-grid" id="courses-content">
+                <!-- Cours chargés dynamiquement -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="resources-tab">
+            <div class="subject-grid" id="resources-content">
+                <!-- Ressources chargées dynamiquement -->
             </div>
         </div>
     </section>
 
     <!-- Courses Section -->
     <section class="courses-section" id="cours">
-        <h2 class="section-title">Nos cours par année</h2>
+        <h2 class="section-title">Nos cours</h2>
         <div class="course-grid">
-            <!-- Année 1 -->
+            <!-- Première Année -->
             <div class="course-card">
                 <div class="course-header">
                     <h3 class="course-title">Première Année</h3>
@@ -1000,7 +1149,7 @@
                 </div>
             </div>
 
-            <!-- Année 2 -->
+            <!-- Deuxième Année -->
             <div class="course-card">
                 <div class="course-header">
                     <h3 class="course-title">Deuxième Année</h3>
@@ -1021,7 +1170,7 @@
                 </div>
             </div>
 
-            <!-- Année 3 -->
+            <!-- Troisième Année -->
             <div class="course-card">
                 <div class="course-header">
                     <h3 class="course-title">Troisième Année</h3>
@@ -1050,60 +1199,8 @@
             <h2 class="section-title">Documents à télécharger</h2>
             <p>Téléchargez nos ressources pédagogiques pour compléter votre formation.</p>
 
-            <div class="file-grid">
-                <div class="file-card">
-                    <div class="file-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h4 class="file-name">Cours de Mathématiques</h4>
-                    <p class="file-type">PDF - 2.4 MB</p>
-                    <a href="#" class="download-btn" data-file="maths_cours.pdf">Télécharger</a>
-                </div>
-
-                <div class="file-card">
-                    <div class="file-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h4 class="file-name">Exercices de Physique</h4>
-                    <p class="file-type">PDF - 1.8 MB</p>
-                    <a href="#" class="download-btn" data-file="physique_exercices.pdf">Télécharger</a>
-                </div>
-
-                <div class="file-card">
-                    <div class="file-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h4 class="file-name">Annales BAC Scientifique</h4>
-                    <p class="file-type">PDF - 3.2 MB <span class="premium-badge">Premium</span></p>
-                    <a href="#" class="download-btn premium-download" data-file="annales_bac.pdf">Télécharger</a>
-                </div>
-
-                <div class="file-card">
-                    <div class="file-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h4 class="file-name">Cours de Chimie</h4>
-                    <p class="file-type">PDF - 2.1 MB</p>
-                    <a href="#" class="download-btn" data-file="chimie_cours.pdf">Télécharger</a>
-                </div>
-
-                <div class="file-card">
-                    <div class="file-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h4 class="file-name">Concours Grandes Écoles</h4>
-                    <p class="file-type">PDF - 4.0 MB <span class="premium-badge">Premium</span></p>
-                    <a href="#" class="download-btn premium-download" data-file="concours_grandes_ecoles.pdf">Télécharger</a>
-                </div>
-
-                <div class="file-card">
-                    <div class="file-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h4 class="file-name">Projets Aérospatiaux</h4>
-                    <p class="file-type">PDF - 3.5 MB <span class="premium-badge">Premium</span></p>
-                    <a href="#" class="download-btn premium-download" data-file="projets_aerospatiaux.pdf">Télécharger</a>
-                </div>
+            <div class="file-grid" id="file-grid">
+                <!-- Fichiers chargés dynamiquement -->
             </div>
         </div>
     </section>
@@ -1385,41 +1482,168 @@
     <script>
         // Variables globales
         let currentUser = null;
-        let courses = [
-            {
-                id: 1,
-                title: "Première Année",
-                price: 249,
-                content: [
-                    { name: "Mathématiques - 12 cours", premium: true, file: "maths_annee1.pdf" },
-                    { name: "Physique - 10 cours", premium: false, file: "physique_annee1.pdf" },
-                    { name: "Chimie - 8 cours", premium: true, file: "chimie_annee1.pdf" },
-                    { name: "Examens blancs - 5 sessions", premium: false, file: "examens_annee1.pdf" }
-                ]
+        let currentProgram = null;
+        
+        // Données des programmes
+        const programsData = {
+            bac: {
+                title: "Préparation BAC Scientifique",
+                courses: {
+                    math: [
+                        { name: "Cours d'algèbre", file: "maths_algebre.pdf", premium: false },
+                        { name: "Cours de géométrie", file: "maths_geometrie.pdf", premium: true },
+                        { name: "Exercices corrigés", file: "maths_exercices.pdf", premium: false },
+                        { name: "Formules essentielles", file: "maths_formules.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Mécanique", file: "physique_mecanique.pdf", premium: false },
+                        { name: "Électromagnétisme", file: "physique_electro.pdf", premium: true },
+                        { name: "Optique", file: "physique_optique.pdf", premium: false }
+                    ],
+                    chemistry: [
+                        { name: "Chimie organique", file: "chimie_organique.pdf", premium: false },
+                        { name: "Cinétique chimique", file: "chimie_cinetique.pdf", premium: true },
+                        { name: "Thermodynamique", file: "chimie_thermo.pdf", premium: false }
+                    ],
+                    english: [
+                        { name: "Vocabulaire scientifique", file: "anglais_vocab.pdf", premium: false },
+                        { name: "Compréhension écrite", file: "anglais_comprehension.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Annales BAC Mathématiques", file: "bac_maths_annales.pdf", premium: true },
+                        { name: "Fiches de révision", file: "maths_fiches.pdf", premium: false }
+                    ],
+                    physics: [
+                        { name: "Annales BAC Physique", file: "bac_physique_annales.pdf", premium: true },
+                        { name: "Expériences pratiques", file: "physique_experiences.pdf", premium: false }
+                    ],
+                    chemistry: [
+                        { name: "Annales BAC Chimie", file: "bac_chimie_annales.pdf", premium: true },
+                        { name: "Tableau périodique", file: "chimie_tableau.pdf", premium: false }
+                    ]
+                }
             },
-            {
-                id: 2,
-                title: "Deuxième Année",
-                price: 299,
-                content: [
-                    { name: "Mathématiques avancées - 15 cours", premium: true, file: "maths_avancees.pdf" },
-                    { name: "Physique quantique - 12 cours", premium: false, file: "physique_quantique.pdf" },
-                    { name: "Projets pratiques - 10 sessions", premium: false, file: "projets_pratiques.pdf" },
-                    { name: "Préparation aux concours - 8 sessions", premium: true, file: "prepa_concours.pdf" }
-                ]
+            prepa: {
+                title: "Classes Préparatoires",
+                courses: {
+                    math: [
+                        { name: "Algèbre linéaire", file: "prepa_algebre.pdf", premium: true },
+                        { name: "Analyse avancée", file: "prepa_analyse.pdf", premium: true },
+                        { name: "Probabilités", file: "prepa_probabilites.pdf", premium: false }
+                    ],
+                    physics: [
+                        { name: "Mécanique du point", file: "prepa_mecanique.pdf", premium: true },
+                        { name: "Électromagnétisme avancé", file: "prepa_electro.pdf", premium: true },
+                        { name: "Thermodynamique statistique", file: "prepa_thermo.pdf", premium: false }
+                    ],
+                    computer: [
+                        { name: "Algorithmique", file: "prepa_algo.pdf", premium: false },
+                        { name: "Programmation Python", file: "prepa_python.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Concours blancs", file: "prepa_concours_maths.pdf", premium: true },
+                        { name: "Problèmes résolus", file: "prepa_problemes_maths.pdf", premium: false }
+                    ],
+                    physics: [
+                        { name: "Concours blancs", file: "prepa_concours_physique.pdf", premium: true },
+                        { name: "Fiches de formules", file: "prepa_fiches_physique.pdf", premium: false }
+                    ],
+                    computer: [
+                        { name: "Exercices algorithmiques", file: "prepa_exos_algo.pdf", premium: false },
+                        { name: "Projets Python", file: "prepa_projets_python.pdf", premium: true }
+                    ]
+                }
             },
-            {
-                id: 3,
-                title: "Troisième Année",
-                price: 349,
-                content: [
-                    { name: "Recherche scientifique - 10 cours", premium: true, file: "recherche_scientifique.pdf" },
-                    { name: "Projets de fin d'études - 15 sessions", premium: false, file: "projets_fin_etudes.pdf" },
-                    { name: "Stages en entreprise - 10 semaines", premium: false, file: "stages_entreprise.pdf" },
-                    { name: "Préparation aux examens finaux - 12 sessions", premium: true, file: "prepa_examens.pdf" }
-                ]
+            ing: {
+                title: "Ingénieries",
+                courses: {
+                    aerospace: [
+                        { name: "Aérodynamique", file: "ing_aerodynamique.pdf", premium: true },
+                        { name: "Propulsion", file: "ing_propulsion.pdf", premium: true },
+                        { name: "Structures aéronautiques", file: "ing_structures.pdf", premium: false }
+                    ],
+                    mechanical: [
+                        { name: "Mécanique des solides", file: "ing_mecanique_solides.pdf", premium: false },
+                        { name: "Thermique", file: "ing_thermique.pdf", premium: true }
+                    ],
+                    electrical: [
+                        { name: "Électronique de puissance", file: "ing_electronique.pdf", premium: false },
+                        { name: "Automatique", file: "ing_automatique.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    aerospace: [
+                        { name: "Projets aérospatiaux", file: "ing_projets_aero.pdf", premium: true },
+                        { name: "Simulations CFD", file: "ing_simulations.pdf", premium: true }
+                    ],
+                    mechanical: [
+                        { name: "Calculs de résistance", file: "ing_calculs_resistance.pdf", premium: false },
+                        { name: "Modélisation 3D", file: "ing_modelisation.pdf", premium: true }
+                    ],
+                    electrical: [
+                        { name: "Circuits complexes", file: "ing_circuits.pdf", premium: false },
+                        { name: "Systèmes embarqués", file: "ing_systemes_embarques.pdf", premium: true }
+                    ]
+                }
+            },
+            deg1: {
+                title: "Certificat du Premier Degré",
+                courses: {
+                    math: [
+                        { name: "Arithmétique", file: "deg1_arithmetique.pdf", premium: false },
+                        { name: "Géométrie élémentaire", file: "deg1_geometrie.pdf", premium: false },
+                        { name: "Statistiques", file: "deg1_statistiques.pdf", premium: true }
+                    ],
+                    science: [
+                        { name: "Biologie", file: "deg1_biologie.pdf", premium: false },
+                        { name: "Géologie", file: "deg1_geologie.pdf", premium: false },
+                        { name: "Astronomie", file: "deg1_astronomie.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Exercices supplémentaires", file: "deg1_exos_maths.pdf", premium: false },
+                        { name: "Examens corrigés", file: "deg1_examens_maths.pdf", premium: true }
+                    ],
+                    science: [
+                        { name: "Expériences pratiques", file: "deg1_experiences.pdf", premium: false },
+                        { name: "Fiches de révision", file: "deg1_fiches_science.pdf", premium: true }
+                    ]
+                }
+            },
+            uni: {
+                title: "Programme Universitaire",
+                courses: {
+                    math: [
+                        { name: "Analyse réelle", file: "uni_analyse.pdf", premium: true },
+                        { name: "Algèbre générale", file: "uni_algebre.pdf", premium: true },
+                        { name: "Topologie", file: "uni_topologie.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Mécanique quantique", file: "uni_mecanique_quantique.pdf", premium: true },
+                        { name: "Relativité générale", file: "uni_relativite.pdf", premium: true }
+                    ],
+                    computer: [
+                        { name: "Intelligence artificielle", file: "uni_ia.pdf", premium: true },
+                        { name: "Apprentissage profond", file: "uni_deep_learning.pdf", premium: true }
+                    ]
+                },
+                resources: {
+                    math: [
+                        { name: "Recherches actuelles", file: "uni_recherche_maths.pdf", premium: true },
+                        { name: "Articles scientifiques", file: "uni_articles_maths.pdf", premium: true }
+                    ],
+                    physics: [
+                        { name: "Simulations avancées", file: "uni_simulations_physique.pdf", premium: true },
+                        { name: "Documents de recherche", file: "uni_documents_physique.pdf", premium: true }
+                    ]
+                }
             }
-        ];
+        };
 
         // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
@@ -1442,6 +1666,16 @@
         const startBtn = document.getElementById('startBtn');
         const discoverBtn = document.getElementById('discoverBtn');
         const notification = document.getElementById('notification');
+        const programDetailSection = document.getElementById('program-detail');
+        const programTitle = document.getElementById('program-title');
+        const coursesTab = document.getElementById('courses-tab');
+        const resourcesTab = document.getElementById('resources-tab');
+        const coursesContent = document.getElementById('courses-content');
+        const resourcesContent = document.getElementById('resources-content');
+        const backButton = document.querySelector('.back-button');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const featuresSection = document.querySelector('.features');
+        const homeLink = document.querySelector('.home-link');
 
         // Modal functions
         function openModal(modal) {
@@ -1680,18 +1914,18 @@
         });
 
         // Handle file downloads
-        downloadBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('download-btn')) {
                 e.preventDefault();
-                const fileName = btn.getAttribute('data-file');
+                const fileName = e.target.getAttribute('data-file');
 
-                if (!currentUser && btn.classList.contains('premium-download')) {
+                if (!currentUser && e.target.classList.contains('premium-download')) {
                     showNotification("Vous devez être connecté pour télécharger ce contenu premium", false);
                     openModal(loginModal);
                     return;
                 }
 
-                if (btn.classList.contains('premium-download') && currentUser && !currentUser.premium) {
+                if (e.target.classList.contains('premium-download') && currentUser && !currentUser.premium) {
                     showNotification("Vous devez être abonné premium pour télécharger ce contenu", false);
                     openModal(premiumModal);
                     return;
@@ -1704,7 +1938,7 @@
                 setTimeout(() => {
                     showNotification(`Téléchargement de "${fileName}" terminé!`);
                 }, 2000);
-            });
+            }
         });
 
         // Handle premium subscription
@@ -1810,6 +2044,118 @@
         // Start button
         startBtn.addEventListener('click', () => {
             openModal(registerModal);
+        });
+
+        // Back to programs
+        backButton.addEventListener('click', () => {
+            programDetailSection.style.display = 'none';
+            featuresSection.style.display = 'block';
+            document.querySelector('#formations').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Home link
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Tab switching
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabButtons.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Load program details
+        function loadProgramDetails(programId) {
+            const program = programsData[programId];
+            if (!program) return;
+            
+            currentProgram = program;
+            programTitle.textContent = program.title;
+            
+            // Load courses
+            coursesContent.innerHTML = '';
+            for (const [subject, files] of Object.entries(program.courses)) {
+                const subjectCard = createSubjectCard(subject, files);
+                coursesContent.appendChild(subjectCard);
+            }
+            
+            // Load resources
+            resourcesContent.innerHTML = '';
+            for (const [subject, files] of Object.entries(program.resources)) {
+                const subjectCard = createSubjectCard(subject, files);
+                resourcesContent.appendChild(subjectCard);
+            }
+            
+            // Show program detail section
+            programDetailSection.style.display = 'block';
+            featuresSection.style.display = 'none';
+            programDetailSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Create subject card
+        function createSubjectCard(subject, files) {
+            const subjectName = capitalizeFirstLetter(subject);
+            
+            const card = document.createElement('div');
+            card.className = 'subject-card';
+            
+            card.innerHTML = `
+                <div class="subject-header">
+                    <div class="subject-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="subject-title">${subjectName}</h3>
+                </div>
+                <ul class="file-list">
+                    ${files.map(file => `
+                        <li class="file-item">
+                            <div class="file-info">
+                                <i class="fas fa-file-pdf file-icon"></i>
+                                <span class="file-name">${file.name}</span>
+                                ${file.premium ? '<span class="premium-badge">Premium</span>' : ''}
+                            </div>
+                            <div class="file-actions">
+                                <button class="download-btn" 
+                                    data-file="${file.file}"
+                                    ${file.premium ? 'premium-download' : ''}>
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            
+            return card;
+        }
+
+        // Capitalize first letter
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        // Program card click event
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const programId = card.getAttribute('data-program');
+                loadProgramDetails(programId);
+            });
         });
 
         // Initialize the page
