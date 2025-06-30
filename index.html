@@ -1136,11 +1136,6 @@
             <h2 class="section-title">Documents à télécharger</h2>
             <p>Téléchargez nos ressources pédagogiques pour compléter votre formation.</p>
             <div class="file-grid" id="file-grid">
-                <a href="https://github.com/Boris4-del/Sciences-Univers/blob/main/Lyc%C3%A9e_Scientique_Togo_Concours_Entr%C3%A9e_2011_2024.pdf" target="_blank">
-Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
-                <a href="https://github.com/Boris4-del/Sciences-Univers/blob/main/Lyc%C3%A9e_Scientique_Togo_Concours_Entr%C3%A9e_2011_2024.pdf"Concours-entrée au Lycée-Scientique-Togo(Doc3)></a>
-
-
                 <!-- Fichiers chargés dynamiquement -->
             </div>
         </div>
@@ -1247,6 +1242,12 @@ Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
         // Variables globales
         let currentUser = null;
         let currentProgram = null;
+
+        // Fonction pour obtenir l'URL de téléchargement direct GitHub
+        function getRawGithubUrl(filename) {
+            const baseUrl = "https://raw.githubusercontent.com/Boris4-del/Sciences-Univers/main/";
+            return baseUrl + encodeURIComponent(filename);
+        }
 
         // Données des programmes
         const programsData = {
@@ -1865,6 +1866,26 @@ Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
             const subjectName = capitalizeFirstLetter(subject);
             const card = document.createElement('div');
             card.className = 'subject-card';
+
+            let filesHtml = '';
+            files.forEach(file => {
+                const downloadUrl = getRawGithubUrl(file.file);
+                filesHtml += `
+                    <li class="file-item">
+                        <div class="file-info">
+                            <i class="fas fa-file-pdf file-icon"></i>
+                            <span class="file-name">${file.name}</span>
+                            ${file.premium ? '<span class="premium-badge">Premium</span>' : ''}
+                        </div>
+                        <div class="file-actions">
+                            <a href="${downloadUrl}" download="${file.file}" class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </a>
+                        </div>
+                    </li>
+                `;
+            });
+
             card.innerHTML = `
                 <div class="subject-header">
                     <div class="subject-icon">
@@ -1873,20 +1894,7 @@ Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
                     <h3 class="subject-title">${subjectName}</h3>
                 </div>
                 <ul class="file-list">
-                    ${files.map(file => `
-                        <li class="file-item">
-                            <div class="file-info">
-                                <i class="fas fa-file-pdf file-icon"></i>
-                                <span class="file-name">${file.name}</span>
-                                ${file.premium ? '<span class="premium-badge">Premium</span>' : ''}
-                            </div>
-                            <div class="file-actions">
-                                <button class="download-btn" data-file="${file.file}" ${file.premium ? 'premium-download' : ''}>
-                                    <i class="fas fa-download"></i>
-                                </button>
-                            </div>
-                        </li>
-                    `).join('')}
+                    ${filesHtml}
                 </ul>
             `;
             return card;
@@ -1907,13 +1915,6 @@ Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
 
         // Initialize the page
         function init() {
-            // Initialiser le diaporama des photos du fondateur
-            //let founderPhotoIndex = 0;
-            //setInterval(() => {
-                //founderPhotoIndex = (founderPhotoIndex + 1) % founderPhotos.length;
-                //founderPhoto.src = founderPhotos[founderPhotoIndex];
-            //}, 3000);
-
             // Initialiser le diaporama des images de fond
             let heroBackgroundIndex = 0;
             setInterval(() => {
@@ -1977,18 +1978,43 @@ Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
         // Initialize file grid
         function initFileGrid() {
             const files = [
-                { name: "Concours d'entrée au Lycée-Scientique-Togo(Doc3)", type: "PDF", size: "1 785 Ko", file: "Lycée_Scientique_Togo_Concours_Entrée_2011_2024.pdf" },
-                { name: "Exercices de Physique", type: "PDF", size: "1.8 MB", file: "physique_exercices.pdf" },
-                { name: "Annales BAC Scientifique", type: "PDF", size: "3.2 MB", file: "annales_bac.pdf", premium: true },
-                { name: "Cours de Chimie", type: "PDF", size: "2.1 MB", file: "chimie_cours.pdf" },
-                { name: "Concours Grandes Écoles", type: "PDF", size: "4.0 MB", file: "concours_grandes_ecoles.pdf", premium: true },
-                { name: "Projets Aérospatiaux", type: "PDF", size: "3.5 MB", file: "projets_aerospatiaux.pdf", premium: true },
-                { name: "Concours X-ENS Mathématiques 2023", type: "PDF", size: "2.8 MB", file: "xens_maths_2023.pdf", premium: true },
-                { name: "Concours Centrale Physique 2023", type: "PDF", size: "3.1 MB", file: "central_physique_2023.pdf", premium: true }
+                {
+                    name: "Concours d'entrée au Lycée-Scientique-Togo(Doc3)",
+                    type: "PDF",
+                    size: "1 785 Ko",
+                    file: "Lycée_Scientique_Togo_Concours_Entrée_2011_2024.pdf"
+                },
+                {
+                    name: "Exercices de Physique",
+                    type: "PDF",
+                    size: "1.8 MB",
+                    file: "physique_exercices.pdf"
+                },
+                {
+                    name: "Annales BAC Scientifique",
+                    type: "PDF",
+                    size: "3.2 MB",
+                    file: "annales_bac.pdf",
+                    premium: true
+                },
+                {
+                    name: "Cours de Chimie",
+                    type: "PDF",
+                    size: "2.1 MB",
+                    file: "chimie_cours.pdf"
+                },
+                {
+                    name: "Concours Grandes Écoles",
+                    type: "PDF",
+                    size: "4.0 MB",
+                    file: "concours_grandes_ecoles.pdf",
+                    premium: true
+                }
             ];
 
             fileGrid.innerHTML = '';
             files.forEach(file => {
+                const downloadUrl = getRawGithubUrl(file.file);
                 const fileCard = document.createElement('div');
                 fileCard.className = 'file-card';
                 fileCard.innerHTML = `
@@ -1997,7 +2023,9 @@ Concours d'entrée au Lycée-Scientique-Togo(Doc3)</a>
                     </div>
                     <h4 class="file-name">${file.name}</h4>
                     <p class="file-type">${file.type} - ${file.size} ${file.premium ? '<span class="premium-badge">Premium</span>' : ''}</p>
-                    <a href="#" class="download-btn ${file.premium ? 'premium-download' : ''}" data-file="${file.file}">Télécharger</a>
+                    <a href="${downloadUrl}" download="${file.file}" class="download-btn">
+                        Télécharger
+                    </a>
                 `;
                 fileGrid.appendChild(fileCard);
             });
